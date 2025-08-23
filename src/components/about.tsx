@@ -91,9 +91,9 @@ export default function AboutSection({children}:AboutSectionProps) {
     }, []);
 
     return (
-        <section ref={sectionRef} id="about" className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <section ref={sectionRef} id="about" className="py-20 md:py-28 bg-black/80 relative overflow-hidden">
             {/* Декоративні елементи */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+            <div className="absolute top-100 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl opacity-50 -z-10"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose-50 rounded-full blur-3xl opacity-50 -z-10"></div>
 
             <div className="container mx-auto px-4">
@@ -124,16 +124,16 @@ export default function AboutSection({children}:AboutSectionProps) {
 
                     {/* Контент */}
                     <div ref={contentRef} className="lg:pl-8">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            Наша <span className="text-amber-600">історія</span> та философія
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-400 mb-6">
+                            Наша <span className="text-amber-700">історія</span> та философія
                         </h2>
 
-                        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                        <p className="text-lg text-gray-500 mb-6 leading-relaxed">
                             Permanent Studio - це місце, де ми створюємо красу, що залишається з вами надовго.
                             Наша місія - допомогти кожній жінці відчути себе впевненою та привабливою.
                         </p>
 
-                        <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                        <p className="text-lg text-gray-500 mb-8 leading-relaxed">
                             Ми використовуємо лише найякісніші пігменти та сучасне обладнання,
                             щоб забезпечити безпечний та комфортний процес з ідеальним результатом.
                         </p>
@@ -146,7 +146,7 @@ export default function AboutSection({children}:AboutSectionProps) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span className="text-gray-800">Сертифіковані майстри з багаторічним досвідом</span>
+                                <span className="text-gray-400">Сертифіковані майстри з багаторічним досвідом</span>
                             </div>
 
                             <div className="flex items-center">
@@ -155,7 +155,7 @@ export default function AboutSection({children}:AboutSectionProps) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span className="text-gray-800">Гіпоалергенні матеріали європейського виробництва</span>
+                                <span className="text-gray-400">Гіпоалергенні матеріали європейського виробництва</span>
                             </div>
 
                             <div className="flex items-center">
@@ -164,7 +164,7 @@ export default function AboutSection({children}:AboutSectionProps) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span className="text-gray-800">Індивідуальний підхід до кожної клієнтки</span>
+                                <span className="text-gray-400">Індивідуальний підхід до кожної клієнтки</span>
                             </div>
 
                             <div className="flex items-center">
@@ -173,7 +173,7 @@ export default function AboutSection({children}:AboutSectionProps) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span className="text-gray-800">Стерильні умови та сучасне обладнання</span>
+                                <span className="text-gray-400">Стерильні умови та сучасне обладнання</span>
                             </div>
                         </div>
 

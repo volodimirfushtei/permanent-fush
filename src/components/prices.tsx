@@ -159,18 +159,18 @@ export default function Prices({children}:PricesProps) {
     }, [activeService]);
 
     return (
-        <section ref={sectionRef} id="services" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <section ref={sectionRef} id="services" className="py-20 md:py-28 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
             {/* Декоративні елементи */}
-            <div className="absolute top-0 left-0 w-72 h-72 bg-amber-100 rounded-full blur-3xl opacity-50"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose-100 rounded-full blur-3xl opacity-50"></div>
+            <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-40"></div>
+            <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-30"></div>
 
             <div className="container mx-auto px-4 relative z-10">
                 {/* Заголовок секції */}
                 <div className="text-center mb-16">
-                    <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Наші <span className="text-amber-600">послуги</span>
+                    <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-gray-300 mb-4">
+                        Наші <span className="text-amber-500">послуги</span>
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                         Професійні послуги перманентного макіяжу від досвідчених майстрів з використанням якісних матеріалів
                     </p>
                 </div>
@@ -181,10 +181,10 @@ export default function Prices({children}:PricesProps) {
                         <div
                             key={index}
 
-                            className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
+                            className={`bg-black/50 rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
                                 activeService === index
-                                    ? 'border-amber-400 shadow-xl scale-105'
-                                    : 'border-white hover:border-amber-200 hover:shadow-xl'
+                                    ? 'border-amber-600 shadow-xl scale-105'
+                                    : 'border-gray-700 hover:border-amber-200 hover:shadow-xl'
                             }`}
                             onClick={() => setActiveService(index)}
                             onMouseEnter={() => setActiveService(index)}
@@ -193,11 +193,11 @@ export default function Prices({children}:PricesProps) {
                                 {service.icon}
                             </div>
 
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
+                            <h3 className="text-xl font-semibold text-gray-400 mb-3 text-center">
                                 {service.title}
                             </h3>
 
-                            <p className="text-gray-600 mb-4 text-center">
+                            <p className="text-gray-500 mb-4 text-center">
                                 {service.description}
                             </p>
 
@@ -214,29 +214,11 @@ export default function Prices({children}:PricesProps) {
                                 <span className="text-2xl font-bold text-amber-600">{service.price}</span>
                             </div>
 
-                            <button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold py-3 rounded-lg mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                            <button className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 font-semibold py-3 rounded-lg mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                                 Детальніше
                             </button>
                         </div>
                     ))}
-                </div>
-
-                {/* CTA блок */}
-                <div className="bg-gradient-to-r from-amber-500 to-rose-500 rounded-3xl p-8 md:p-12 text-center text-white">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                        Готові до перетворення?
-                    </h3>
-                    <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
-                        Запишіться на безкоштовну консультацію та отримайте індивідуальні рекомендації
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button className="bg-white text-amber-600 font-semibold px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1">
-                            Записатися онлайн
-                        </button>
-                        <button className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-amber-600 transition-all duration-300">
-                            Зателефонувати
-                        </button>
-                    </div>
                 </div>
             </div>
         </section>

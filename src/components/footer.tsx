@@ -29,6 +29,8 @@ export default function Footer({children}:FooterProps) {
 
     return (
         <footer ref={footerRef} className="bg-gradient-to-b from-gray-900 to-black text-white pt-16 pb-8">
+            <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
+            <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-10"></div>
             <div className="container mx-auto px-4">
                 {/* Основной контент футера */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
