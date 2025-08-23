@@ -189,7 +189,7 @@ function Hero({ children }: HeroProps) {
                     <h1 className='text-7xl md:text-8xl lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2'>
                         Fush
                     </h1>
-                    <h2 className='text-5xl md:text-8xl lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
+                    <h2 className='text-2xl md:text-4xl lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
                         Ф'юш
                     </h2>
                 </div>
