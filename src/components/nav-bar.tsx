@@ -153,7 +153,7 @@ export default function NavBar({ children }: NavBarProps) {
                         <a
                             ref={iconRef}
                             className="w-inline-block border border-white/30 rounded-full p-2.5 hover:bg-white hover:border-white transition-all duration-300 group"
-                            href='https://www.instagram.com/perm.fush/'
+                            href='https://www.instagram.com/fushtei_y/'
                             target="_blank"
                             rel="noopener noreferrer"
                         >

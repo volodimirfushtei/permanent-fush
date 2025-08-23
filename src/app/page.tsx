@@ -10,12 +10,6 @@ export default function Home() {
           <Hero children={undefined}/>
           <ServicesSection children={undefined} />
           <Footer children={undefined} />
-
-
-
-
-
-
       </main>
     </div>
   );

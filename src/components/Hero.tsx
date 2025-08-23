@@ -28,7 +28,7 @@ const images = [
         animation: { x: -800, rotation: -15, z: 100 }
     },
     {
-        image: "https://images.unsplash.com/photo-1604537466158-719b1972feb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+        image: "/images/IMG_3666.JPEG",
         className: "w-56 h-40 md:w-64 md:h-48 lg:w-76 lg:h-56 absolute top-[10%] left-[30%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: 800, rotation: 10, z: 100 }
     }
@@ -57,79 +57,81 @@ function Hero({ children }: HeroProps) {
 
 
     useEffect(() => {
-        // Анімація для частинок
+        if (!heroRef.current) return;
+
+        // Паралакс ефект
+        gsap.to(heroRef.current, {
+            backgroundPosition: "50% 100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: heroRef.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        // Частинки
         if (particlesRef.current) {
-            const particles = particlesRef.current.children;
-            gsap.fromTo(particles,
+            const particles = gsap.utils.toArray(particlesRef.current.children); // ✅
+            gsap.fromTo(
+                particles,
                 { opacity: 0, y: 20 },
                 {
                     opacity: 1,
                     y: 0,
                     duration: 1.5,
                     stagger: 0.1,
-                    ease: "power2.out"
+                    ease: "power2.out",
                 }
             );
         }
 
-        // Анімація для тексту
-        gsap.fromTo(textRef.current,
+        // Текст
+        gsap.fromTo(
+            textRef.current,
             { y: 100, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1.8,
-                ease: "elastic.out(1, 0.5)"
-            }
+            { y: 0, opacity: 1, duration: 1.8, ease: "elastic.out(1, 0.5)" }
         );
 
-        // Анімація для підзаголовка
-        gsap.fromTo(subtitleRef.current,
+        // Підзаголовок
+        gsap.fromTo(
+            subtitleRef.current,
             { y: 50, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1.5,
-                delay: 0.5,
-                ease: "power3.out"
-            }
+            { y: 0, opacity: 1, duration: 1.5, delay: 0.5, ease: "power3.out" }
         );
 
-        // Анімація для кнопки
-        gsap.fromTo(buttonRef.current,
+        // Кнопка
+        gsap.fromTo(
+            buttonRef.current,
             { scale: 0, opacity: 0 },
-            {
-                scale: 1,
-                opacity: 1,
-                duration: 1,
-                delay: 1,
-                ease: "back.out(1.7)"
-            }
+            { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" }
         );
 
-        // Анімація для картинок при скролі
+        // Анімація картинок при скролі
         imageRefs.forEach((imgRef, index) => {
             if (imgRef.current) {
-                const animationProps = images[index].animation;
-
+                const anim = images[index].animation;
                 gsap.to(imgRef.current, {
-                    x: animationProps.x,
-                    rotation: animationProps.rotation,
+                    x: anim.x,
+                    rotation: anim.rotation,
                     opacity: 0,
                     scrollTrigger: {
                         trigger: heroRef.current,
                         start: "bottom bottom",
                         end: "bottom top",
                         scrub: 1.5,
-                    }
+                    },
                 });
             }
         });
 
-        // Додаткова анімація для появи картинок
-        const imageElements = imageRefs.map(ref => ref.current).filter(Boolean) as HTMLImageElement[];
-
-        gsap.fromTo(imageElements,
+        // Поява картинок
+        const imageElements = imageRefs
+            .map(ref => ref.current)
+            .filter(Boolean) as HTMLImageElement[];
+        gsap.fromTo(
+            imageElements,
             { opacity: 0, scale: 0.8, y: 50 },
             {
                 opacity: 1,
@@ -138,56 +140,35 @@ function Hero({ children }: HeroProps) {
                 duration: 1.5,
                 stagger: 0.3,
                 ease: "back.out(1.7)",
-                delay: 0.8
+                delay: 0.8,
             }
         );
 
-        // Анімація плаваючих елементів
-        const floatingElements = document.querySelectorAll('.floating-element');
-        floatingElements.forEach(el => {
-            gsap.to(el, {
-                y: 15,
-                duration: 3,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-        });
+        // Плаваючі елементи
+        if (heroRef.current) {
+            heroRef.current
+                .querySelectorAll(".floating-element")
+                .forEach(el => {
+                    gsap.to(el, {
+                        y: 15,
+                        duration: 3,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut",
+                    });
+                });
+        }
 
-        // Cleanup function
+        // Cleanup
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
-    }, []);
-
-    // Генератор частинок
-    const renderParticles = () => {
-        if (!isMounted) return null;
-
-        const particles = [];
-        for (let i = 0; i < 25; i++) {
-            const size = Math.random() * 10 + 2;
-            const style = {
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${size}px`,
-                height: `${size}px`,
-                animationDelay: `${Math.random() * 5}s`
-            };
-            particles.push(
-                <div
-                    key={i}
-                    className="absolute rounded-full bg-yellow-400/30 floating-element"
-                    style={style}
-                />
-            );
-        }
-        return particles;
-    };
+    }, [])
 
     return (
         <div
             ref={heroRef}
+            style={{ backgroundImage: "url('/images/lips.jpg')" , backgroundSize: "cover"}}
             className="relative bg-gradient-to-br from-gray-800 via-black/90 to-gray-800 overflow-hidden h-screen w-full flex items-center justify-center"
         >
             {/* Фоновий градієнт */}
@@ -195,7 +176,7 @@ function Hero({ children }: HeroProps) {
 
             {/* Частинки */}
             <div ref={particlesRef} className="absolute inset-0 overflow-hidden">
-                {renderParticles()}
+
             </div>
 
             {/* Декоративні елементи */}
