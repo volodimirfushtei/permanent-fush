@@ -168,8 +168,8 @@ function Hero({ children }: HeroProps) {
     return (
         <div
             ref={heroRef}
-            style={{ backgroundImage: "url('/images/lips.jpg')" , backgroundSize: "cover"}}
-            className="relative bg-gradient-to-br from-gray-800 via-black/90 to-gray-800 overflow-hidden h-screen w-full flex items-center justify-center"
+
+            className="relative overflow-hidden h-screen w-full flex items-center justify-center"
         >
             {/* Фоновий градієнт */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 via-transparent to-transparent"></div>

@@ -111,9 +111,9 @@ export default function NavBar({ children }: NavBarProps) {
                     <a
                         ref={logoRef}
                         href="#"
-                        className="relative text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-yellow-400 via-amber-300 to-white bg-clip-text py-2 transition-all duration-300 hover:scale-105 group"
+                        className="relative text-2xl md:text-3xl font-bold uppercase text-transparent bg-gradient-to-r from-yellow-400 via-amber-300 to-white bg-clip-text py-2 transition-all duration-300 hover:scale-105 group"
                     >
-                        Permanent.
+                        Fush
                         <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-300 group-hover:w-full"></div>
                     </a>
 
@@ -145,7 +145,7 @@ export default function NavBar({ children }: NavBarProps) {
                             ref={buttonRef}
                             className="hidden md:block relative bg-gradient-to-r from-gray-900 to-gray-800 text-white border border-gray-700 text-base font-medium px-6 lg:px-8 py-2 lg:py-2.5 rounded-full overflow-hidden hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-400 hover:text-black hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 group"
                         >
-                            <span className="relative z-10">Contact me</span>
+                            <span className="relative z-10">+380979600057</span>
                             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
                         </button>
 

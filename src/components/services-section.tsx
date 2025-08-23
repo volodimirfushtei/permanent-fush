@@ -111,8 +111,8 @@ export default function ServicesSection({children}: ServicesSectionProps ) {
     ];
 
     const stats = [
-        { number: 50, label: 'Завершених робіт' },
-        { number: 55, label: 'Задоволених клієнтів' },
+        { number: 102, label: 'Завершених робіт' },
+        { number: 95, label: 'Задоволених клієнтів' },
         { number: 2, label: 'Років досвіду' },
         { number: 3, label: 'Фахівців в команді' }
     ];

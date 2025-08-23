@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --bg-color: #806767;
+  --bg-color: #0a0a0a;
   --primary-font: Geist, sans-serif;
   --white: #f4f4f4;
   --black: #1c1c1c;
@@ -27,3 +27,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Спеціальні класи для анімацій */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);}
