@@ -26,7 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      ><NavBar children={children}/>
+      > {/* Навбар поверх усіх секцій */}
+      <NavBar />
+
+      {/* Контент сторінки */}
+      <main>{children}</main>
 
 
       </body>

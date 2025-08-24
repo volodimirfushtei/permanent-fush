@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
+import styles from './notfound.module.css';
 export interface NotFoundProps {
     children?: React.ReactNode;
 }
@@ -110,7 +110,7 @@ export default function NotFoundPage({children}:NotFoundProps) {
 
                 {/* Текст */}
                 <div ref={textRef} className="mb-12">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-500 mb-4">
+                    <h1 className={`text-3xl md:text-4xl font-bold text-gray-500 mb-4 ${styles.glow_text}`}>
                         Ой! Сторінку не знайдено
                     </h1>
                     <p className="text-xl text-gray-600 mb-6 max-w-md mx-auto">
@@ -151,34 +151,22 @@ export default function NotFoundPage({children}:NotFoundProps) {
 
                 {/* Додаткові посилання */}
                 <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                    <Link href="/services" className="text-gray-500 hover:text-amber-600 transition-colors">
+                    <Link href="/services" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
                         Послуги
                     </Link>
-                    <Link href="/about" className="text-gray-500 hover:text-amber-600 transition-colors">
+                    <Link href="/about" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
                         Про нас
                     </Link>
-                    <Link href="/gallery" className="text-gray-500 hover:text-amber-600 transition-colors">
+                    <Link href="/gallery" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
                         Галерея
                     </Link>
-                    <Link href="/pricing" className="text-gray-500 hover:text-amber-600 transition-colors">
+                    <Link href="/pricing" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
                         Ціни
                     </Link>
                 </div>
             </div>
 
-            {/* Інтерактивний елемент в кутку */}
-            <div className="absolute bottom-8 left-8">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center cursor-pointer hover:bg-amber-200 transition-colors">
-                    <span className="text-2xl">👑</span>
-                </div>
-            </div>
 
-            {/* Анімований елемент */}
-            <div className="absolute top-8 right-8 floating-element">
-                <div className="w-16 h-16 bg-rose-100 rounded-2xl rotate-45 flex items-center justify-center">
-                    <span className="text-xl -rotate-45">✨</span>
-                </div>
-            </div>
             {children}
         </div>
     );

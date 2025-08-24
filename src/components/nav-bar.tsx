@@ -5,6 +5,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 export interface NavBarProps {
     children?: React.ReactNode;
@@ -12,12 +14,39 @@ export interface NavBarProps {
 
 export default function NavBar({ children }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                // скролимо вниз -> ховаємо
+                setHidden(true);
+            } else {
+                // скролимо вгору -> показуємо
+                setHidden(false);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+
+
+
+
+
+
     const navbarRef = useRef<HTMLDivElement>(null);
     const logoRef = useRef<HTMLAnchorElement>(null);
     const navItemsRef = useRef<(HTMLLIElement | null)[]>([]);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const iconRef = useRef<HTMLAnchorElement>(null);
-
+const mobileRef = useRef<HTMLDivElement>(null);
     // Додаємо посилання до масиву
     const addToRefs = (el: HTMLLIElement | null, index: number) => {
         navItemsRef.current[index] = el;
@@ -70,7 +99,7 @@ export default function NavBar({ children }: NavBarProps) {
     // Анімація для мобільного меню
     useEffect(() => {
         if (isMenuOpen) {
-            gsap.to('.mobile-menu', {
+            gsap.to(mobileRef.current, {
                 opacity: 1,
                 y: 0,
                 duration: 0.4,
@@ -94,7 +123,7 @@ export default function NavBar({ children }: NavBarProps) {
                 delay: 0.4
             });
         } else {
-            gsap.to('.mobile-menu', {
+            gsap.to(mobileRef.current, {
                 opacity: 0,
                 y: -20,
                 duration: 0.3,
@@ -104,9 +133,11 @@ export default function NavBar({ children }: NavBarProps) {
     }, [isMenuOpen]);
 
     return (
-        <div className="bg-transparent w-full  z-50" ref={navbarRef}>
-            <div className="w-full max-w-[1200px] mx-auto bg-black/30 backdrop-blur-md mt-4 px-4 lg:px-8 border border-white/10 rounded-full transition-all duration-300">
-                <div className="flex items-center justify-between h-16 md:h-20 mx-auto">
+        <div className="fixed top-0 left-0 w-full z-50 bg-transparent" ref={navbarRef} >
+            <div  className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
+                hidden ? "-translate-y-full" : "translate-y-0"
+            } bg-black/70 backdrop-blur-md text-white`}>
+                <div className="flex items-center justify-around h-20 md:h-24 mx-auto">
                     {/* Логотип */}
                     <a
                         ref={logoRef}
@@ -180,7 +211,7 @@ export default function NavBar({ children }: NavBarProps) {
             </div>
 
             {/* Мобільне меню */}
-            <div className={`mobile-menu fixed top-full left-0 w-full bg-gradient-to-b from-gray-900 to-black backdrop-blur-xl border-b border-white/10 transition-all duration-300 md:hidden transform -translate-y-2 opacity-0`}>
+            <div ref={mobileRef} className={`mobile-menu fixed top-full left-0 w-full bg-gradient-to-b from-gray-900 to-black backdrop-blur-xl border-b border-white/10 transition-all duration-300 md:hidden transform -translate-y-2 opacity-0`}>
                 <div className="px-5 py-8">
                     <ul className="space-y-6 mb-8">
                         {['Home', 'About', 'Services', 'Contacts'].map((item) => (

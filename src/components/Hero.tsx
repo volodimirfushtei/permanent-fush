@@ -14,27 +14,33 @@ export interface HeroProps {
 const images = [
     {
         image: "/images/IMG_3683.JPEG",
-        className: "w-72 h-52 md:w-60 md:h-50 lg:w-76 lg:h-62 absolute top-[45%] left-[48%] md:left-[72%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-72 h-52 md:w-60 md:h-50 lg:w-76 lg:h-62 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: -1000, rotation: -25, z: 100 }
     },
     {
         image: "/images/IMG_3668.JPEG",
-        className: "w-74 h-48 md:w-92 md:h-56 lg:w-84 lg:h-64 absolute top-[0%] right-[15%] md:right-[20%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-74 h-48 md:w-92 md:h-56 lg:w-84 lg:h-64 absolute top-[8%] right-[15%] md:right-[20%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: 1000, rotation: 15, z: 100 }
     },
     {
         image: "/images/IMG_4577.PNG",
-        className: "w-60 h-44 md:w-68 md:h-52 lg:w-80 lg:h-60 absolute bottom-[20%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-60 h-44 md:w-68 md:h-52 lg:w-80 lg:h-60 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: -800, rotation: -15, z: 100 }
     },
     {
         image: "/images/IMG_3666.JPEG",
-        className: "w-56 h-40 md:w-64 md:h-48 lg:w-76 lg:h-56 absolute top-[0%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-56 h-40 md:w-64 md:h-48 lg:w-76 lg:h-56 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: 800, rotation: 10, z: 100 }
     }
 ];
 
 function Hero({ children }: HeroProps) {
+
+
+
+
+
+
     const heroRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -168,8 +174,13 @@ function Hero({ children }: HeroProps) {
     return (
         <div
             ref={heroRef}
-
-            className="relative overflow-hidden h-screen w-full flex items-center justify-center"
+            style={{
+                backgroundImage: "url('/images/IMG_4577.JPEG')",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat"
+            }}
+            className="relative overflow-hidden h-screen w-full flex items-center justify-center pt-20"
         >
             {/* Фоновий градієнт */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 via-transparent to-transparent"></div>

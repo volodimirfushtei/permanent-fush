@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import styles from './about.module.css';
 
 export interface AboutSectionProps {
     children?: React.ReactNode;
@@ -109,9 +109,8 @@ export default function AboutSection({children}:AboutSectionProps) {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
 
-                        {/* Декорativні елементи на зображенні */}
-                        <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-amber-400 rounded-2xl rotate-12 z-10 shadow-xl"></div>
-                        <div className="absolute -top-6 -right-6 w-20 h-20 bg-rose-400 rounded-2xl -rotate-12 z-10 shadow-xl"></div>
+
+
 
                         {/* Experience badge */}
                         <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">

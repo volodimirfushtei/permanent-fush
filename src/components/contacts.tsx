@@ -3,7 +3,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import styles from './contacts.module.css';
+import dynamic from "next/dynamic";
 
+const Map = dynamic(() => import("./map"), {
+    ssr: false,
+});
 export interface ContactsProps {
     name?: string;
     phone?: string;
@@ -123,7 +128,10 @@ export default function Contacts({children}: ContactsProps) {
     ];
 
     return (
-        <div ref={pageRef} className="min-h-screen bg-gradient-to-b from-gray-950 to-black pt-24 pb-16">
+        <div ref={pageRef} className="min-h-screen bg-gradient-to-b from-gray-950 to-black pt-24 pb-16 relative">
+
+            <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
+            <div className="absolute bottom-25 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-20"></div>
             {/* Хедер сторінки */}
             <div className="container mx-auto px-4 mb-12">
                 <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4">
@@ -137,8 +145,8 @@ export default function Contacts({children}: ContactsProps) {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
                     {/* Форма зворотного зв'язку */}
-                    <div className="bg-white rounded-3xl p-8 shadow-xl">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">Напишіть нам</h2>
+                    <div className="bg-black/90 border-2 border-gray-600 rounded-3xl p-8 shadow-xl">
+                        <h2 className="text-2xl font-bold text-gray-400 mb-6">Напишіть нам</h2>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -191,9 +199,10 @@ export default function Contacts({children}: ContactsProps) {
                             </div>
 
                             <div>
-                                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="service" className="block text-sm font-medium text-gray-600 mb-2">
                                     Послуга
                                 </label>
+
                                 <select
                                     id="service"
                                     name="service"
@@ -206,6 +215,8 @@ export default function Contacts({children}: ContactsProps) {
                                         <option key={index} value={service}>{service}</option>
                                     ))}
                                 </select>
+
+
                             </div>
 
                             <div>
@@ -233,68 +244,55 @@ export default function Contacts({children}: ContactsProps) {
                     </div>
 
                     {/* Карта та контакти */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 ">
                         {/* Карта */}
-                        <div ref={mapRef} className="bg-white rounded-3xl p-6 shadow-xl">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">Ми знаходимось</h2>
-                            <div className="aspect-video bg-gradient-to-br from-amber-100 to-rose-100 rounded-xl flex items-center justify-center">
-                                <div className="text-center">
-                                    <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        </svg>
-                                    </div>
-                                    <p className="text-gray-600">м. Київ, вул. Хрещатик, 123</p>
-                                    <p className="text-sm text-gray-500 mt-2">Натисніть для перегляду на Google Maps</p>
+                        <div ref={mapRef} className="bg-black/10 border-2 border-gray-600 rounded-3xl p-6 shadow-xl">
+                            <h2 className="text-2xl font-bold text-center text-gray-400 mb-1">Адреса</h2>
+                            <div className=" bg-black/10 rounded-xl flex items-center justify-center">
+                                <div className="">
+
+                                    <p className="text-gray-400">м. Київ, вул. Хрещатик, 123</p>
+                                    <p className="text-sm text-gray-400 mt-2">Натисніть для перегляду на карті</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Контактна інформація */}
-                        <div ref={infoRef} className="bg-white rounded-3xl p-6 shadow-xl">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">Контактна інформація</h2>
+                        <div className={`mt-4 ${styles.map_container}`}>
+                            <Map />
+                        </div>
 
-                            <div className="space-y-4">
+                        {/* Контактна інформація */}
+                        <div ref={infoRef} className="bg-black/90 border-2 border-gray-600 rounded-3xl p-6 shadow-xl">
+                            <h2 className="text-2xl font-bold text-gray-400 mb-6">Контактна інформація</h2>
+
+                            <div className="space-y-4 flex flex-row gap-6 items-center justify-center ">
                                 <div className="flex items-center">
-                                    <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mr-4">
                                         <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-gray-600">Телефон</p>
-                                        <a href="tel:+380991234567" className="text-lg font-semibold text-gray-900 hover:text-amber-600 transition-colors">
+                                        <p className="text-gray-400">Телефон</p>
+                                        <a href="tel:+380991234567" className="text-lg font-semibold text-gray-400 hover:text-amber-600 transition-colors">
                                             +38 (099) 123-45-67
                                         </a>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center">
-                                    <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
-                                        <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-gray-600">Email</p>
-                                        <a href="mailto:info@permanent.studio" className="text-lg font-semibold text-gray-900 hover:text-amber-600 transition-colors">
-                                            info@permanent.studio
-                                        </a>
-                                    </div>
-                                </div>
+
 
                                 <div className="flex items-center">
-                                    <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mr-4">
                                         <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-gray-600">Години роботи</p>
-                                        <p className="text-lg font-semibold text-gray-900">Пн-Пт: 10:00-20:00</p>
-                                        <p className="text-lg font-semibold text-gray-900">Сб: 11:00-18:00</p>
-                                        <p className="text-lg font-semibold text-gray-900">Нд: За записом</p>
+                                        <p className="text-gray-500">Години роботи</p>
+                                        <p className="text-lg font-semibold text-gray-500">Пн-Пт: 10:00-20:00</p>
+                                        <p className="text-lg font-semibold text-gray-500">Сб: 11:00-18:00</p>
+                                        <p className="text-lg font-semibold text-gray-500">Нд: За записом</p>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +301,7 @@ export default function Contacts({children}: ContactsProps) {
                 </div>
 
                 {/* Соціальні мережі */}
-                <div className="bg-gradient-to-r from-amber-500 to-rose-500 rounded-3xl p-8 text-center text-white">
+                <div className="bg-gradient-to-r from-gray-950 to-gray-900 rounded-3xl border-2 border-gray-600 p-8 text-center text-white">
                     <h2 className="text-2xl font-bold mb-4">Слідкуйте за нами</h2>
                     <p className="text-amber-100 mb-6">Приєднуйтесь до нашої спільноти в соціальних мережах</p>
 
