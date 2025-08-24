@@ -128,7 +128,7 @@ export default function Contacts({children}: ContactsProps) {
     ];
 
     return (
-        <div ref={pageRef} className="min-h-screen bg-gradient-to-b from-gray-950 to-black pt-24 pb-16 relative">
+        <div ref={pageRef} className="min-h-screen bg-gradient-to-b from-gray-950 to-black pt-20 pb-16 relative">
 
             <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
             <div className="absolute bottom-25 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-20"></div>
@@ -247,18 +247,15 @@ export default function Contacts({children}: ContactsProps) {
                     <div className="space-y-8 ">
                         {/* Карта */}
                         <div ref={mapRef} className="bg-black/10 border-2 border-gray-600 rounded-3xl p-6 shadow-xl">
-                            <h2 className="text-2xl font-bold text-center text-gray-400 mb-1">Адреса</h2>
-                            <div className=" bg-black/10 rounded-xl flex items-center justify-center">
-                                <div className="">
+                            <h2 className="text-2xl font-bold text-left text-gray-400 mb-1">Адреса</h2>
 
-                                    <p className="text-gray-400">м. Київ, вул. Хрещатик, 123</p>
-                                    <p className="text-sm text-gray-400 mt-2">Натисніть для перегляду на карті</p>
-                                </div>
-                            </div>
+                                    <p className="text-gray-400 text-left">м. Івано-Франківськ, вул.Загвіздянська,6</p>
+
                         </div>
 
-                        <div className={`mt-4 ${styles.map_container}`}>
+                        <div  className={`mt-4 ${styles.map_container}`}>
                             <Map />
+                            <div className={styles.map_overlay}></div>
                         </div>
 
                         {/* Контактна інформація */}
@@ -274,7 +271,7 @@ export default function Contacts({children}: ContactsProps) {
                                     </div>
                                     <div>
                                         <p className="text-gray-400">Телефон</p>
-                                        <a href="tel:+380991234567" className="text-lg font-semibold text-gray-400 hover:text-amber-600 transition-colors">
+                                        <a href="tel:+380979600057" className="text-lg font-semibold text-gray-400 hover:text-amber-600 transition-colors">
                                             +38 (099) 123-45-67
                                         </a>
                                     </div>

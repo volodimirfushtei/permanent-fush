@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from "next/image";
+
 
 export interface ServicesSectionProps {
     children?: React.ReactNode;
@@ -89,24 +89,35 @@ export default function ServicesSection({children}: ServicesSectionProps ) {
 
     const services = [
         {
-            image: '/images/IMG_4577.PNG',
-            title: 'Перманентний макіяж',
-            description: 'Сучасні та природні  пігменти'
-        },
-        {
-            image: '/images/IMG_4577.PNG',
-            title: 'Ламінування вій',
-            description: 'Якісні та природні  пігменти'
-        },
-        {
-            image: '/images/lips.jpg',
-            title: 'Лазерний remove',
-            description: 'Швмдке та доступне видалення'
+            image: '/images/IMG_4578.PNG',
+            title: 'Пудрове напилення брів',
+            description: 'Сучасні мінеральні пігменти'
         },
         {
             image: '/images/IMG_4578.PNG',
-            title: 'Коррекція брів',
-            description: 'Покращення ефекту перманенту'
+            title: 'Пудрове напилення губ',
+            description: 'Ідеальний загоєний результат'
+
+        },
+        {
+            image: '/images/per_lashline.jpg',
+            title: "Макіяж міжвійкового простору",
+            description: "Створення ефекту густих вій"
+        },
+        {
+            image: '/images/remover.jpg',
+            title: 'Видалення перманентного макіяжу',
+            description: 'Видалення ремувером'
+        },
+        {
+            image: '/images/lips.jpg',
+            title: 'Корекція та фарбування брів',
+            description: 'Якісні матеріали, корекція воском та пінцетом'
+        },
+        {
+            image: '/images/IMG_4578.PNG',
+            title: 'Ламінування вій',
+            description: 'Ламінування, фарбування та ботокс'
         }
     ];
 
@@ -135,7 +146,7 @@ export default function ServicesSection({children}: ServicesSectionProps ) {
                 </div>
 
                 {/* Картки послуг */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 md:mb-28">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 md:mb-28">
                     {services.map((service, index) => (
                         <div
                             key={index}
@@ -145,14 +156,14 @@ export default function ServicesSection({children}: ServicesSectionProps ) {
                             <img
                                 src={service.image}
                                 alt={service.title}
-                                className="w-full h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
+                                className="w-full h-64 object-cover cursor-pointer rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
                             />
                             <h3 className="text-xl font-semibold text-white mt-2 mb-1">{service.title}</h3>
                             <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                                 {service.description}
                             </p>
                             <div className="mt-6">
-                                <button className="text-amber-400 font-medium flex items-center group-hover:text-amber-300 transition-colors duration-300">
+                                <button className="text-amber-400 font-medium flex items-center group-hover:text-amber-300 transition-colors duration-300 cursor-pointer">
                                     Детальніше
                                     <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -195,6 +206,7 @@ export default function ServicesSection({children}: ServicesSectionProps ) {
                     </div>
                 </div>
             </div>
+            {children}
         </section>
     );
 }

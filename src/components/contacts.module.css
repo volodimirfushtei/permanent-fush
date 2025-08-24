@@ -15,10 +15,16 @@
 
 
 
-.map_container::before {
-    content: "";
+.map_container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.map_overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    z-index: 10;
 }

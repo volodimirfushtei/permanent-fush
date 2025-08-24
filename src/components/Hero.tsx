@@ -23,7 +23,7 @@ const images = [
         animation: { x: 1000, rotation: 15, z: 100 }
     },
     {
-        image: "/images/IMG_4577.PNG",
+        image: "/images/IMG_4578.PNG",
         className: "w-60 h-44 md:w-68 md:h-52 lg:w-80 lg:h-60 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: -800, rotation: -15, z: 100 }
     },
@@ -35,11 +35,6 @@ const images = [
 ];
 
 function Hero({ children }: HeroProps) {
-
-
-
-
-
 
     const heroRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);

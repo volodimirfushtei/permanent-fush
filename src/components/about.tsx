@@ -6,14 +6,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './about.module.css';
 
 export interface AboutSectionProps {
-    children?: React.ReactNode;
 }
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function AboutSection({children}:AboutSectionProps) {
+export default function AboutSection({}: AboutSectionProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -91,10 +90,10 @@ export default function AboutSection({children}:AboutSectionProps) {
     }, []);
 
     return (
-        <section ref={sectionRef} id="about" className="py-20 md:py-28 bg-black/80 relative overflow-hidden">
+        <section ref={sectionRef} id="about" className="h-screen py-20 md:py-28 bg-black/80 relative overflow-hidden">
             {/* Декоративні елементи */}
-            <div className="absolute top-100 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl opacity-50 -z-10"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20"></div>
 
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -104,7 +103,7 @@ export default function AboutSection({children}:AboutSectionProps) {
                             <img
                                 src="/images/IMG_3683.JPEG"
                                 alt="Permanent Studio - інтер'єр салону"
-                                className="w-full h-[500px] object-cover"
+                                className="w-full h-[600px] object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>

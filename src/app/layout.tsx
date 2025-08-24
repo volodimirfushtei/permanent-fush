@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
+import ErrorBoundary from '@/components/error-boundary';
+import React from "react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,13 +28,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      > {/* Навбар поверх усіх секцій */}
+      >
+      <ErrorBoundary>
+      {/* Навбар поверх усіх секцій */}
       <NavBar />
 
       {/* Контент сторінки */}
       <main>{children}</main>
 
-
+      </ErrorBoundary>
       </body>
     </html>
   );

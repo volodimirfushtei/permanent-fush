@@ -31,15 +31,16 @@ export const customPin = L.divIcon({
 export default function Map() {
     return (
         <MapContainer
-            center={[48.9226, 24.7111]} // Івано-Франківськ
+            center={[48.9415463, 24.6972177]} // Івано-Франківськ
             zoom={13}
             style={{ height: "260px", width: "100%", borderRadius: "16px" }}
         >
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+                opacity={0.9}
             />
-            <Marker position={[48.9226, 24.7111]} icon={customPin}>
+            <Marker position={[48.9415463, 24.6972177]} icon={customPin}>
                 <Popup>Івано-Франківськ📍</Popup>
             </Marker>
         </MapContainer>

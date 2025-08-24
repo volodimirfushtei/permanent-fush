@@ -6,6 +6,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from "next/link";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export interface NavBarProps {
@@ -16,44 +18,40 @@ export default function NavBar({ children }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                // скролимо вниз -> ховаємо
+            // Зміна фону при скролі
+            setScrolled(currentScrollY > 50);
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setHidden(true);
             } else {
-                // скролимо вгору -> показуємо
                 setHidden(false);
             }
 
             setLastScrollY(currentScrollY);
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
-
-
-
-
-
 
     const navbarRef = useRef<HTMLDivElement>(null);
     const logoRef = useRef<HTMLAnchorElement>(null);
     const navItemsRef = useRef<(HTMLLIElement | null)[]>([]);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const iconRef = useRef<HTMLAnchorElement>(null);
-const mobileRef = useRef<HTMLDivElement>(null);
-    // Додаємо посилання до масиву
+    const mobileRef = useRef<HTMLDivElement>(null);
+
     const addToRefs = (el: HTMLLIElement | null, index: number) => {
         navItemsRef.current[index] = el;
     };
 
     useEffect(() => {
-        // Анімація появи навігації
         const tl = gsap.timeline();
 
         tl.fromTo(logoRef.current,
@@ -79,24 +77,24 @@ const mobileRef = useRef<HTMLDivElement>(null);
             "-=0.2"
         );
 
-        // Анімація фону на скрол
-        if (navbarRef.current) {
-            gsap.to(navbarRef.current, {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                backdropFilter: 'blur(16px)',
-                borderColor: 'rgba(255, 255, 255, 0.15)',
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: document.body,
-                    start: 'top top',
-                    end: '+=100',
-                    scrub: true,
-                },
-            });
-        }
+        // Анімація зміни фону при скролі
+        ScrollTrigger.create({
+            trigger: document.body,
+            start: "top top",
+            end: "max",
+            onUpdate: (self) => {
+                const progress = self.progress;
+                if (navbarRef.current) {
+                    const bgOpacity = Math.min(0.95, progress * 2);
+                    const blurAmount = Math.min(20, progress * 40);
+                    navbarRef.current.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
+                    navbarRef.current.style.backdropFilter = `blur(${blurAmount}px)`;
+                }
+            }
+        });
+
     }, []);
 
-    // Анімація для мобільного меню
     useEffect(() => {
         if (isMenuOpen) {
             gsap.to(mobileRef.current, {
@@ -133,106 +131,155 @@ const mobileRef = useRef<HTMLDivElement>(null);
     }, [isMenuOpen]);
 
     return (
-        <div className="fixed top-0 left-0 w-full z-50 bg-transparent" ref={navbarRef} >
-            <div  className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
-                hidden ? "-translate-y-full" : "translate-y-0"
-            } bg-black/70 backdrop-blur-md text-white`}>
-                <div className="flex items-center justify-around h-20 md:h-24 mx-auto">
-                    {/* Логотип */}
-                    <a
-                        ref={logoRef}
-                        href="#"
-                        className="relative text-2xl md:text-3xl font-bold uppercase text-transparent bg-gradient-to-r from-yellow-400 via-amber-300 to-white bg-clip-text py-2 transition-all duration-300 hover:scale-105 group"
-                    >
-                        Fush
-                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-300 group-hover:w-full"></div>
-                    </a>
+        <>
+            <div
+                ref={navbarRef}
+                className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out ${
+                    hidden ? "-translate-y-full" : "translate-y-0"
+                } ${
+                    scrolled
+                        ? "bg-black/95 backdrop-blur-xl shadow-2xl shadow-black/30 border-b border-white/10"
+                        : "bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md"
+                }`}
+            >
+                <div className="container mx-auto px-4">
+                    <div className="flex items-center justify-between h-16 md:h-20">
+                        {/* Логотип */}
+                        <Link
+                            ref={logoRef}
+                            href="/"
+                            className="relative group"
+                        >
+              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">
+                FUSH
+              </span>
+                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-300 group-hover:w-full"></div>
+                        </Link>
 
-                    {/* Десктопна навігація */}
-                    <nav className="hidden md:flex">
-                        <ul className="flex space-x-6 lg:space-x-10">
-                            {['Home', 'About', 'Services', 'Contacts'].map((item, index) => (
-                                <li
-                                    key={item}
-                                    className="relative group"
-                                    ref={el => addToRefs(el, index)}
-                                >
-                                    <a
-                                        href="#"
-                                        className="text-gray-200 text-lg font-medium transition-all duration-300 hover:text-white relative py-2"
+                        {/* Десктопна навігація */}
+                        <nav className="hidden md:flex">
+                            <ul className="flex space-x-8">
+                                {[
+                                    { label: "Home", path: "/" },
+                                    { label: "About", path: "/about" },
+                                    { label: "Services", path: "/services" },
+                                    { label: "Contacts", path: "/contacts" },
+                                ].map((item, index) => (
+                                    <li
+                                        key={item.label}
+                                        className="relative group"
+                                        ref={(el) => addToRefs(el, index)}
                                     >
-                                        {item}
-                                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-300 group-hover:w-full"></div>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-300 opacity-0 group-hover:opacity-5 rounded-lg transition-opacity duration-300"></div>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                                        <Link
+                                            href={item.path}
+                                            className="text-gray-200 text-sm font-medium transition-all duration-300 hover:text-white relative py-2 px-1"
+                                        >
+                                            {item.label}
+                                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-300 group-hover:w-full"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-amber-400/5 to-yellow-300/5 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
 
-                    {/* Кнопка та мобільне меню */}
-                    <div className="flex items-center space-x-4 lg:space-x-6">
-                        <button
-                            ref={buttonRef}
-                            className="hidden md:block relative bg-gradient-to-r from-gray-900 to-gray-800 text-white border border-gray-700 text-base font-medium px-6 lg:px-8 py-2 lg:py-2.5 rounded-full overflow-hidden hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-400 hover:text-black hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 group"
-                        >
-                            <span className="relative z-10">+380979600057</span>
-                            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
-                        </button>
+                        {/* Права частина */}
+                        <div className="flex items-center space-x-4">
+                            {/* Телефон */}
+                            <button
+                                ref={buttonRef}
+                                className="hidden md:flex items-center space-x-2 bg-gradient-to-r from-amber-500/10 to-yellow-400/10 text-amber-300 text-sm font-medium px-4 py-2 rounded-full border border-amber-500/20 hover:bg-amber-500/20 hover:border-amber-400/40 hover:text-white transition-all duration-300 group"
+                            >
+                                <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+                                <span>+380979600057</span>
+                            </button>
 
-                        {/* Instagram іконка */}
-                        <a
-                            ref={iconRef}
-                            className="w-inline-block border border-white/30 rounded-full p-2.5 hover:bg-white hover:border-white transition-all duration-300 group"
-                            href='https://www.instagram.com/fushtei_y/'
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img
-                                src="https://cdn.prod.website-files.com/63d06fa3150c60feef4b9cb8/63d07b53f294b93eaad1e051_instagram-white.png"
-                                loading="lazy"
-                                width="24"
-                                alt="Instagram"
-                                className="group-hover:invert transition-all duration-300"
-                            />
-                        </a>
+                            {/* Instagram */}
+                            <a
+                                ref={iconRef}
+                                className="p-2.5 bg-gradient-to-r from-amber-500/10 to-yellow-400/10 border border-amber-500/20 rounded-full hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300 group"
+                                href='https://www.instagram.com/fushtei_y/'
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div className="w-5 h-5 bg-gradient-to-r from-amber-400 to-yellow-300 group-hover:from-white group-hover:to-white transition-all duration-300 mask mask-instagram"></div>
+                            </a>
 
-                        {/* Кнопка мобільного меню */}
-                        <button
-                            className="md:hidden flex flex-col justify-center w-8 h-8 space-y-1.5 group"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <span className={`block w-full h-0.5 bg-white transition-all duration-300 transform ${isMenuOpen ? 'rotate-45 translate-y-2 bg-amber-400' : 'group-hover:bg-amber-400'}`}></span>
-                            <span className={`block w-full h-0.5 bg-white transition-all duration-300 transform ${isMenuOpen ? '-rotate-45 -translate-y-0.5 bg-amber-400' : 'group-hover:bg-amber-400'}`}></span>
-                        </button>
+                            {/* Мобільне меню */}
+                            <button
+                                className="md:hidden flex flex-col justify-center w-10 h-10 space-y-1.5 group p-2"
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                aria-label="Toggle menu"
+                            >
+                                <span className={`block w-6 h-0.5 bg-amber-400 transition-all duration-300 transform ${isMenuOpen ? 'rotate-45 translate-y-2 bg-white' : 'group-hover:bg-white'}`}></span>
+                                <span className={`block w-6 h-0.5 bg-amber-400 transition-all duration-300 transform ${isMenuOpen ? '-rotate-45 -translate-y-0.5 bg-white' : 'group-hover:bg-white'}`}></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* Мобільне меню */}
-            <div ref={mobileRef} className={`mobile-menu fixed top-full left-0 w-full bg-gradient-to-b from-gray-900 to-black backdrop-blur-xl border-b border-white/10 transition-all duration-300 md:hidden transform -translate-y-2 opacity-0`}>
-                <div className="px-5 py-8">
-                    <ul className="space-y-6 mb-8">
-                        {['Home', 'About', 'Services', 'Contacts'].map((item) => (
-                            <li key={item} className="opacity-0 transform translate-y-4">
-                                <a
-                                    href="#"
-                                    className="block text-white text-2xl font-medium py-3 transition-all duration-300 hover:text-amber-400 pl-4 border-l-2 border-transparent hover:border-amber-400"
+            <div
+                ref={mobileRef}
+                className="fixed top-0 left-0 w-full h-screen bg-gradient-to-br from-black to-gray-900 backdrop-blur-2xl z-40 md:hidden opacity-0 transform -translate-y-10"
+            >
+                <div className="container mx-auto px-4 h-full flex flex-col justify-center">
+                    {/* Кнопка закриття */}
+                    <button
+                        className="absolute top-6 right-4 w-10 h-10 flex items-center justify-center text-amber-400 hover:text-white transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        <span className="text-2xl">×</span>
+                    </button>
+
+                    {/* Навігація */}
+                    <nav className="space-y-8">
+                        {[
+                            { label: "Home", path: "/" },
+                            { label: "About", path: "/about" },
+                            { label: "Services", path: "/services" },
+                            { label: "Contacts", path: "/contacts" },
+                        ].map((item, index) => (
+                            <div key={item.label} className="opacity-0 transform translate-y-4">
+                                <Link
+                                    href={item.path}
+                                    className="text-2xl font-semibold text-white hover:text-amber-400 transition-colors duration-300 flex items-center group"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    {item}
-                                </a>
-                            </li>
+                                    <span className="w-2 h-2 bg-amber-400 rounded-full mr-4 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    {item.label}
+                                </Link>
+                            </div>
                         ))}
-                    </ul>
-                    <button className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-lg font-semibold px-8 py-4 rounded-full hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300 transform translate-y-4 opacity-0">
-                        Contact me
-                    </button>
+                    </nav>
+
+                    {/* Контакти в мобільному меню */}
+                    <div className="mt-12 pt-8 border-t border-white/10">
+                        <div className="space-y-4">
+                            <a href="tel:+380979600057" className="flex items-center text-amber-400 text-lg font-semibold">
+                <span className="w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center mr-3">
+                  <span className="w-2 h-2 bg-black rounded-full"></span>
+                </span>
+                                +380979600057
+                            </a>
+                            <a
+                                href="https://www.instagram.com/fushtei_y/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center text-white text-lg opacity-80 hover:opacity-100 transition-opacity"
+                            >
+                <span className="w-6 h-6 bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full flex items-center justify-center mr-3">
+                  <span className="w-3 h-3 bg-black rounded-full"></span>
+                </span>
+                                @fushtei_y
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             {children}
-        </div>
+        </>
     );
 }
