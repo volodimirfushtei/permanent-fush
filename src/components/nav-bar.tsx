@@ -72,7 +72,7 @@ export default function NavBar({ children }: NavBarProps) {
         );
 
         tl.fromTo(iconRef.current,
-            { opacity: 0, rotation: -90 },
+            { opacity: 0, rotation: -180 },
             { opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" },
             "-=0.2"
         );
@@ -198,12 +198,26 @@ export default function NavBar({ children }: NavBarProps) {
                             {/* Instagram */}
                             <a
                                 ref={iconRef}
-                                className="p-2.5 bg-gradient-to-r from-amber-500/10 to-yellow-400/10 border border-amber-500/20 rounded-full hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300 group"
+                                className="p-2 bg-gradient-to-r from-amber-500/10 to-yellow-400/10 border border-amber-500/20 rounded-full hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300 group"
                                 href='https://www.instagram.com/fushtei_y/'
                                 target="_blank"
                                 rel="noopener noreferrer"
-                            >
-                                <div className="w-5 h-5 bg-gradient-to-r from-amber-400 to-yellow-300 group-hover:from-white group-hover:to-white transition-all duration-300 mask mask-instagram"></div>
+                            ><svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" viewBox="0 0 24 24">
+                                <defs>
+                                    <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#f09433"/>
+                                        <stop offset="25%" stopColor="#e6683c"/>
+                                        <stop offset="50%" stopColor="#dc2743"/>
+                                        <stop offset="75%" stopColor="#cc2366"/>
+                                        <stop offset="100%" stopColor="#bc1888"/>
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    fill="url(#ig-gradient)"
+                                    d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zm0 1.5h8.5a4.25 4.25 0 014.25 4.25v8.5a4.25 4.25 0 01-4.25 4.25h-8.5A4.25 4.25 0 013.5 16.25v-8.5A4.25 4.25 0 017.75 3.5zm9.5 2a.75.75 0 100 1.5.75.75 0 000-1.5zM12 7a5 5 0 100 10 5 5 0 000-10z"
+                                />
+                            </svg>
+
                             </a>
 
                             {/* Мобільне меню */}

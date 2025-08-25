@@ -25,7 +25,16 @@
 body {
   background: var(--bg-color);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-script: "Dancing Script", cursive;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif), serif;
+}
+span {
+  font-family: var(--font-script), serif;
 }
 @keyframes float {
   0%, 100% { transform: translateY(0px); }

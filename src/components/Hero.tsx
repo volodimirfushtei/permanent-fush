@@ -170,7 +170,7 @@ function Hero({ children }: HeroProps) {
         <div
             ref={heroRef}
             style={{
-                backgroundImage: "url('/images/IMG_4577.JPEG')",
+                backgroundImage: "url('/images/modern.jpg')",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
@@ -192,10 +192,10 @@ function Hero({ children }: HeroProps) {
             {/* Головний контент */}
             <div className="relative z-30 text-center px-4 md:px-8 max-w-6xl mx-auto">
                 <div ref={textRef} className="mb-6">
-                    <h1 className='text-7xl md:text-8xl lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2'>
+                    <h1 className='text-7xl md:text-8xl mb-6 lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2'>
                         Fush
                     </h1>
-                    <h2 className='text-2xl md:text-4xl lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
+                    <h2 className='text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
                         Ф'юш
                     </h2>
                 </div>
@@ -249,11 +249,8 @@ function Hero({ children }: HeroProps) {
             <div className="absolute top-1/2 left-10 w-8 h-8 rounded-full bg-yellow-400/25 floating-element"></div>
 
             {/* Індикатор скролу */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30">
-                <span className="text-yellow-400/80 text-sm mb-2 animate-pulse">Прокрутіть вниз</span>
-                <div className="w-6 h-10 border-2 border-yellow-400/50 rounded-full flex justify-center p-1">
-                    <div className="w-1 h-3 bg-yellow-400/80 rounded-full mt-2 animate-bounce"></div>
-                </div>
+            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                <span className="text-gray-200 text-xl mb-2 animate-bounce">Scroll Down</span>
             </div>
 
             {children}
