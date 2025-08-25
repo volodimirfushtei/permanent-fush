@@ -164,6 +164,7 @@ export default function NavBar({ children }: NavBarProps) {
                                     { label: "About", path: "/about" },
                                     { label: "Services", path: "/services" },
                                     { label: "Contacts", path: "/contacts" },
+                                    { label: "Brows", path: "/brows" }
                                 ].map((item, index) => (
                                     <li
                                         key={item.label}
@@ -229,32 +230,27 @@ export default function NavBar({ children }: NavBarProps) {
 
 
                     {/* Навігація */}
-                    <nav className="space-y-4 mt-6">
-
-                        {[
-                            { label: "Home", path: "/" },
-                            { label: "About", path: "/about" },
-                            { label: "Services", path: "/services" },
-                            { label: "Contacts", path: "/contacts" },
-                        ].map((item, index) => (
-                            <li
-                                key={item.label}
-                                className="relative group  list-none"
-                                ref={(el) => addToRefs(el, index)}
-                            >
-                            <div  className="transform translate-y-4">
-                                <Link
-                                    href={item.path}
-                                    className="text-xl font-semibold text-white hover:text-amber-400 transition-colors duration-300 flex items-center group"
-                                    onClick={() => setIsMenuOpen(false)}
-
-                                >
-                                    <span className="w-2 h-2 bg-amber-400 rounded-full mr-4 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                                    {item.label}
-                                </Link>
-                            </div>
-                            </li>
-                        ))}
+                    <nav className="mt-10">
+                        <ul className="space-y-4">
+                            {[
+                                { label: "Home", path: "/" },
+                                { label: "About", path: "/about" },
+                                { label: "Services", path: "/services" },
+                                { label: "Contacts", path: "/contacts" },
+                                { label: "Brows", path: "/brows"},
+                            ].map((item) => (
+                                <li key={item.label} className="relative group">
+                                    <Link
+                                        href={item.path}
+                                        className="text-2xl font-semibold text-white hover:text-amber-400 transition-colors duration-300 flex items-center"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        <span className="w-2 h-2 bg-amber-400 rounded-full mr-4 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </nav>
 
                     {/* Контакти в мобільному меню */}
