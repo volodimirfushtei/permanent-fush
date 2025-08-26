@@ -7,6 +7,7 @@ import Prices from "@/components/prices";
 
 
 
+
 export default function Home() {
   return (
     <div className="font-sans overflow-hidden ">
@@ -15,6 +16,7 @@ export default function Home() {
           <Hero children={undefined}/>
           <ServicesSection children={undefined} />
           <Prices children={undefined}/>
+
 
           <Footer children={undefined} />
 

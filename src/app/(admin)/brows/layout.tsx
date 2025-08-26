@@ -10,7 +10,7 @@ export default function Layout({
     return (
         <>
             <NavBar/>
-            <main className="flex flex-col w-screen pt-20">
+            <main className="flex flex-col w-screen ">
                 {children}
             </main>
         </>

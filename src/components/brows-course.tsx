@@ -107,9 +107,14 @@ export default function BrowsCoursePage() {
     ];
 
     return (
-        <div ref={pageRef} className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+        <div ref={pageRef}  className="min-h-screen bg-black/90 from-amber-50 to-white">
             {/* Hero Section */}
-            <section ref={heroRef} className="relative py-20 md:py-28 bg-gradient-to-r from-amber-500 to-rose-500 text-white overflow-hidden">
+            <section style={{
+                backgroundImage: "url('/images/course.jpg')",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat"
+            }} ref={heroRef}  className="relative py-20 md:py-28  text-white overflow-hidden">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">

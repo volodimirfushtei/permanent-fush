@@ -8,7 +8,7 @@ export interface PageProps {
 }
 export default function Page({}:PageProps) {
     return (
-        <div><Contacts />
+        <div className="font-sans overflow-hidden pt-10"><Contacts />
         </div>
     );
 }

@@ -134,16 +134,16 @@ export default function NavBar({ children }: NavBarProps) {
         <>
             <div
                 ref={navbarRef}
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out ${
+                className={`fixed top-0 left-0 w-full z-50  transition-all duration-500 ease-out ${
                     hidden ? "-translate-y-full" : "translate-y-0"
                 } ${
                     scrolled
-                        ? "bg-black/95 backdrop-blur-xl shadow-2xl shadow-black/30 border-b border-white/10"
+                        ? "bg-black/95 backdrop-blur-xl shadow-2xl shadow-black/30 border-b border-gray-200"
                         : "bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md"
                 }`}
             >
                 <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-between h-16 md:h-20">
+                    <div className="flex items-center justify-between h-20 md:h-24">
                         {/* Логотип */}
                         <Link
                             ref={logoRef}

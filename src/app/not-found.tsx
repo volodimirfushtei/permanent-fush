@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import styles from './notfound.module.css';
+import styles from '@/components/notfound.module.css';
 export interface NotFoundProps {
     children?: React.ReactNode;
 }
@@ -124,7 +124,7 @@ export default function NotFoundPage({children}:NotFoundProps) {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link
                         ref={buttonRef}
-                        href="/"
+                        href="/public"
                         className="group relative bg-gradient-to-r from-amber-500 to-rose-500 text-white font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                     >
                         <span className="relative z-10">На головну</span>
@@ -133,14 +133,14 @@ export default function NotFoundPage({children}:NotFoundProps) {
 
                     <button
                         onClick={handleGoBack}
-                        className="group border-2 border-gray-300 text-gray-700 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-amber-400 hover:text-amber-600"
+                        className="group border-2 border-gray-300 text-gray-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-amber-400 hover:text-amber-600"
                     >
                         <span className="relative z-10">Назад</span>
                     </button>
 
                     <Link
                         href="/contacts"
-                        className="group text-gray-700 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:text-rose-600 flex items-center"
+                        className="group text-gray-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:text-rose-600 flex items-center"
                     >
                         <span className="relative z-10">Контакти</span>
                         <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

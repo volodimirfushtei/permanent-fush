@@ -1,6 +1,6 @@
 'use client';
 
-import GlobalError from '@/components/globalerror';
+import GlobalError from '@/components/global-error';
 
 export default function RootGlobalError({
                                             error,

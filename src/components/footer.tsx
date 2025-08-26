@@ -154,6 +154,7 @@ export default function Footer({children}:FooterProps) {
                 </div>
 
             </div>
+            {children}
 
         </footer>
     );

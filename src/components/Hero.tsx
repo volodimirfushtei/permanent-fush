@@ -63,7 +63,7 @@ function Hero({ children }: HeroProps) {
         // Паралакс ефект
         gsap.to(heroRef.current, {
             backgroundPosition: "50% 100%",
-            ease: "none",
+            ease: "power1.out",
             scrollTrigger: {
                 trigger: heroRef.current,
                 start: "top top",
@@ -175,7 +175,7 @@ function Hero({ children }: HeroProps) {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
             }}
-            className="relative overflow-hidden h-screen w-full flex items-center justify-center pt-20"
+            className="relative overflow-hidden h-screen w-full flex items-center justify-center"
         >
             {/* Фоновий градієнт */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 via-transparent to-transparent"></div>
