@@ -91,6 +91,7 @@ export default function AboutSection({}: AboutSectionProps) {
 
     return (
         <section ref={sectionRef} id="about" className="h-screen py-20 md:py-28 bg-black/80 relative overflow-hidden">
+            <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-8">Про нас</h2>
             {/* Декоративні елементи */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20"></div>
@@ -103,7 +104,7 @@ export default function AboutSection({}: AboutSectionProps) {
                             <img
                                 src="/images/IMG_3683.JPEG"
                                 alt="Permanent Studio - інтер'єр салону"
-                                className="w-full h-[600px] object-cover"
+                                className="w-full h-[550px] object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>

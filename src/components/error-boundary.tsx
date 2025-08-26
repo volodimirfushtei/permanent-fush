@@ -1,4 +1,3 @@
-// components/ErrorBoundary.tsx
 'use client';
 
 import React from 'react';
@@ -11,21 +10,30 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
     hasError: boolean;
     error?: Error;
+    resetKey: number; // ключ для форсованого ремоунту
 }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
-        this.state = { hasError: false };
+        this.state = { hasError: false, resetKey: 0 };
     }
 
-    static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    static getDerivedStateFromError(error: Error): Partial<ErrorBoundaryState> {
         return { hasError: true, error };
     }
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         console.error('Error caught by boundary:', error, errorInfo);
     }
+
+    handleReset = () => {
+        this.setState(prev => ({
+            hasError: false,
+            error: undefined,
+            resetKey: prev.resetKey + 1, // змінюємо ключ => ремоунт дітей
+        }));
+    };
 
     render() {
         if (this.state.hasError) {
@@ -44,7 +52,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
                             </p>
                         </div>
                         <button
-                            onClick={() => this.setState({ hasError: false })}
+                            onClick={this.handleReset}
                             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
                             Спробувати знову
@@ -54,8 +62,13 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
             );
         }
 
-        return this.props.children;
+        return (
+            <React.Fragment key={this.state.resetKey}>
+                {this.props.children}
+            </React.Fragment>
+        );
     }
 }
 
 export default ErrorBoundary;
+

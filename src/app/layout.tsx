@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PageTransition from "@/components/page-transition";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
-import ErrorBoundary from '@/components/error-boundary';
-import "./global-error";
+
+
 import React from "react";
 import { Montserrat, Playfair_Display, Dancing_Script } from "next/font/google";
 
@@ -41,7 +41,7 @@ export default function RootLayout({
     return (
         <html lang="uk" className={`${montserrat.variable} ${playfair.variable} ${dancing.variable}`}>
         <body className="font-sans antialiased">
-        <ErrorBoundary>
+
             {/* Навбар поверх усіх секцій */}
             <NavBar />
 
@@ -51,7 +51,7 @@ export default function RootLayout({
                     {children}
                 </main>
             </PageTransition>
-        </ErrorBoundary>
+
         </body>
         </html>
     );

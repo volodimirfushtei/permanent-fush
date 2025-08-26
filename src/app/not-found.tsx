@@ -157,11 +157,11 @@ export default function NotFoundPage({children}:NotFoundProps) {
                     <Link href="/about" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
                         Про нас
                     </Link>
-                    <Link href="/gallery" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
-                        Галерея
+                    <Link href="/brows" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
+                        Онлайн курс
                     </Link>
-                    <Link href="/pricing" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
-                        Ціни
+                    <Link href="/contacts" className={`text-gray-500 hover:text-amber-600 transition-colors ${styles.gradient_border}`}>
+                        Контакти
                     </Link>
                 </div>
             </div>

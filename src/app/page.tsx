@@ -13,12 +13,11 @@ export default function Home() {
     <div className="font-sans overflow-hidden ">
       <main className="flex flex-col w-screen">
 
-          <Hero children={undefined}/>
-          <ServicesSection children={undefined} />
-          <Prices children={undefined}/>
+          <Hero/>
+          <ServicesSection/>
+          <Prices/>
 
-
-          <Footer children={undefined} />
+          <Footer/>
 
 
       </main>

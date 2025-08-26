@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef,  useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,7 +14,7 @@ export interface HeroProps {
 const images = [
     {
         image: "/images/IMG_3683.JPEG",
-        className: "w-72 h-52 md:w-60 md:h-50 lg:w-76 lg:h-62 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-72 h-52 md:w-60 md:h-50 lg:w-86 lg:h-72 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: -1000, rotation: -25, z: 100 }
     },
     {
@@ -24,12 +24,12 @@ const images = [
     },
     {
         image: "/images/IMG_4578.PNG",
-        className: "w-60 h-44 md:w-68 md:h-52 lg:w-80 lg:h-60 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-60 h-44 md:w-68 md:h-52 lg:w-90 lg:h-70 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: -800, rotation: -15, z: 100 }
     },
     {
         image: "/images/IMG_3666.JPEG",
-        className: "w-56 h-40 md:w-64 md:h-48 lg:w-76 lg:h-56 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
+        className: "w-56 h-40 md:w-64 md:h-48 lg:w-86 lg:h-66 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
         animation: { x: 800, rotation: 10, z: 100 }
     }
 ];
@@ -37,7 +37,7 @@ const images = [
 function Hero({ children }: HeroProps) {
 
     const heroRef = useRef<HTMLDivElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const particlesRef = useRef<HTMLDivElement>(null);
@@ -50,16 +50,17 @@ function Hero({ children }: HeroProps) {
 
     const imageRefs = [imageRef1, imageRef2, imageRef3, imageRef4];
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setIsMounted(true);
     }, []);
 
 
 
 
-    useEffect(() => {
-        if (!heroRef.current) return;
+    useLayoutEffect(() => {
+        if (!isMounted) return;
 
+        const ctx = gsap.context(() => {
         // Паралакс ефект
         gsap.to(heroRef.current, {
             backgroundPosition: "50% 100%",
@@ -74,33 +75,14 @@ function Hero({ children }: HeroProps) {
 
         // Частинки
         if (particlesRef.current) {
-            const particles = gsap.utils.toArray(particlesRef.current.children); // ✅
-            gsap.fromTo(
-                particles,
-                { opacity: 0, y: 20 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.5,
-                    stagger: 0.1,
-                    ease: "power2.out",
-                }
-            );
+            const particles = particlesRef.current
+                ? gsap.utils.toArray(particlesRef.current.children)
+                : [];
+            if (particles.length > 0) {
+                gsap.fromTo(particles, { opacity: 0, y: 20 }, { opacity: 1, y: 0 });
+            }
+
         }
-
-        // Текст
-        gsap.fromTo(
-            textRef.current,
-            { y: 100, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.8, ease: "elastic.out(1, 0.5)" }
-        );
-
-        // Підзаголовок
-        gsap.fromTo(
-            subtitleRef.current,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.5, delay: 0.5, ease: "power3.out" }
-        );
 
         // Кнопка
         gsap.fromTo(
@@ -108,6 +90,48 @@ function Hero({ children }: HeroProps) {
             { scale: 0, opacity: 0 },
             { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" }
         );
+            gsap.fromTo(titleRef.current,
+                // from values (початковий стан)
+                {
+                    x: 0,
+                    opacity: 1,
+                },
+                // to values (кінцевий стан)
+                {
+                    x: -100,
+                    opacity: 0,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: 1.5,
+                    }
+                }
+            );
+
+            gsap.fromTo(subtitleRef.current,
+                // from values (початковий стан)
+                {
+                    x: 0,
+                    opacity: 1,
+                },
+                // to values (кінцевий стан)
+                {
+                    x: 100,
+                    opacity: 0,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: 1.5,
+                    }
+                }
+            );
+
 
         // Анімація картинок при скролі
         imageRefs.forEach((imgRef, index) => {
@@ -159,12 +183,10 @@ function Hero({ children }: HeroProps) {
                     });
                 });
         }
-
+        }, heroRef);
         // Cleanup
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, [])
+        return () => ctx.revert();
+    }, [isMounted]);
 
     return (
         <div
@@ -191,11 +213,11 @@ function Hero({ children }: HeroProps) {
 
             {/* Головний контент */}
             <div className="relative z-30 text-center px-4 md:px-8 max-w-6xl mx-auto">
-                <div ref={textRef} className="mb-6">
-                    <h1 className='text-7xl md:text-8xl mb-6 lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2'>
+                <div  className="mb-6">
+                    <h1 ref={titleRef} className='text-7xl md:text-8xl mb-6 lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2'>
                         Fush
                     </h1>
-                    <h2 className='text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
+                    <h2 ref={subtitleRef} className='text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10'>
                         Ф'юш
                     </h2>
                 </div>
