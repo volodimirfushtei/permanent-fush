@@ -1,15 +1,11 @@
-import React from 'react';
-import About from '@/components/about';
+import React from "react";
+import About from "@/components/about";
 
-
-
-export interface PageProps {
-
+export interface PageProps {}
+export default function Page({}: PageProps) {
+  return (
+    <div>
+      <About />
+    </div>
+  );
 }
-export default function Page({}:PageProps) {
-    return (
-        <div><About />
-        </div>
-    );
-}
-

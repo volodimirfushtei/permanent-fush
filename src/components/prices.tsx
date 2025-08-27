@@ -1,226 +1,244 @@
-'use client';
+"use client";
 
-import React, { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
-export interface PricesProps  {
-    children?: React.ReactNode;
-    icon?: string;
-    title?: string;
-    description?: string;
-    details?: string[];
-    price?: string;
-    image?: string;
+export interface PricesProps {
+  children?: React.ReactNode;
+  icon?: string;
+  title?: string;
+  description?: string;
+  details?: string[];
+  price?: string;
+  image?: string;
 }
 
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Prices({children}:PricesProps) {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const titleRef = useRef<HTMLHeadingElement>(null);
-    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-    const [activeService, setActiveService] = useState(0);
+export default function Prices({ children }: PricesProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeService, setActiveService] = useState(0);
 
-    const services = [
+  const services = [
+    {
+      icon: "✏️",
+      title: "Перманентний макіяж",
+      description:
+        "Сучасні техніки перманентного макіяжу з використанням якісних пігментів європейського виробництва. Довготривалий результат та натуральний вигляд.",
+      details: [
+        "Тривалість: 2-3 години",
+        "Знеболення: крем-анестетик",
+        "Результат: 1-3 роки",
+        "Корекція: через 4-6 тижнів",
+      ],
+      price: "від 3000 грн",
+      image: "/images/permanent-makeup.jpg",
+    },
+    {
+      icon: "👁️",
+      title: "Мікроблейдинг брів",
+      description:
+        "Створення ефекту натуральних волосинок за технологією hair stroke. Ідеальна форма та густота брів, що підкреслює вашу природну красу.",
+      details: [
+        "Тривалість: 2-2.5 години",
+        "Знеболення: крем-анестетик",
+        "Результат: 1-2 роки",
+        "Корекція: через 4-8 тижнів",
+      ],
+      price: "від 2500 грн",
+      image: "/images/microblading.jpg",
+    },
+    {
+      icon: " Powder",
+      title: "Пудрові вії",
+      description:
+        "Ніжний ефект make-up, що надає очам виразності. Ідеальне рішення для тих, хто хоче підкреслити природну красу без щоденного макіяжу.",
+      details: [
+        "Тривалість: 2-3 години",
+        "Знеболення: крем-анестетик",
+        "Результат: 1-2 роки",
+        "Корекція: через 4-6 тижнів",
+      ],
+      price: "від 3500 грн",
+      image: "/images/powder-brows.jpg",
+    },
+    {
+      icon: " Lami",
+      title: "Ламінування брів",
+      description:
+        "Процедура оформлення та фіксації брів, що надає їм ідеальну форму, обєм та доглянутий вигляд. Ефект протягом 6-8 тижнів.",
+      details: [
+        "Тривалість: 45-60 хвилин",
+        "Результат: 6-8 тижнів",
+        "Догляд: спеціальний серум",
+        "Без знеболення",
+      ],
+      price: "від 800 грн",
+      image: "/images/laminating.jpg",
+    },
+    {
+      icon: " Color",
+      title: "Корекція та підкрашування",
+      description:
+        "Професійна корекція існуючого перманентного макіяжу, оновлення кольору та форми. Повернення яскравості та чіткості.",
+      details: [
+        "Тривалість: 1.5-2 години",
+        "Знеболення: крем-анестетик",
+        "Періодичність: 1-2 роки",
+        "Відновлення кольору",
+      ],
+      price: "від 2000 грн",
+      image: "/images/correction.jpg",
+    },
+    {
+      icon: " Consult",
+      title: "Консультація та догляд",
+      description:
+        "Професійна консультація щодо догляду після процедур, підбору форми та кольору. Індивідуальний підхід до кожної клієнтки.",
+      details: [
+        "Тривалість: 30-45 хвилин",
+        "Безкоштовна консультація",
+        "Індивідуальний підхід",
+        "Рекомендації догляду",
+      ],
+      price: "безкоштовно",
+      image: "/images/consultation.jpg",
+    },
+  ];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Анімація заголовка
+      gsap.fromTo(
+        titleRef.current,
+        { y: 50, opacity: 0 },
         {
-            icon: '✏️',
-            title: 'Перманентний макіяж',
-            description: 'Сучасні техніки перманентного макіяжу з використанням якісних пігментів європейського виробництва. Довготривалий результат та натуральний вигляд.',
-            details: [
-                'Тривалість: 2-3 години',
-                'Знеболення: крем-анестетик',
-                'Результат: 1-3 роки',
-                'Корекція: через 4-6 тижнів'
-            ],
-            price: 'від 3000 грн',
-            image: '/images/permanent-makeup.jpg'
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
         },
-        {
-            icon: '👁️',
-            title: 'Мікроблейдинг брів',
-            description: 'Створення ефекту натуральних волосинок за технологією hair stroke. Ідеальна форма та густота брів, що підкреслює вашу природну красу.',
-            details: [
-                'Тривалість: 2-2.5 години',
-                'Знеболення: крем-анестетик',
-                'Результат: 1-2 роки',
-                'Корекція: через 4-8 тижнів'
-            ],
-            price: 'від 2500 грн',
-            image: '/images/microblading.jpg'
-        },
-        {
-            icon: ' Powder',
-            title: 'Пудрові вії',
-            description: 'Ніжний ефект make-up, що надає очам виразності. Ідеальне рішення для тих, хто хоче підкреслити природну красу без щоденного макіяжу.',
-            details: [
-                'Тривалість: 2-3 години',
-                'Знеболення: крем-анестетик',
-                'Результат: 1-2 роки',
-                'Корекція: через 4-6 тижнів'
-            ],
-            price: 'від 3500 грн',
-            image: '/images/powder-brows.jpg'
-        },
-        {
-            icon: ' Lami',
-            title: 'Ламінування брів',
-            description: 'Процедура оформлення та фіксації брів, що надає їм ідеальну форму, обєм та доглянутий вигляд. Ефект протягом 6-8 тижнів.',
-            details: [
-                'Тривалість: 45-60 хвилин',
-                'Результат: 6-8 тижнів',
-                'Догляд: спеціальний серум',
-                'Без знеболення'
-            ],
-            price: 'від 800 грн',
-            image: '/images/laminating.jpg'
-        },
-        {
-            icon: ' Color',
-            title: 'Корекція та підкрашування',
-            description: 'Професійна корекція існуючого перманентного макіяжу, оновлення кольору та форми. Повернення яскравості та чіткості.',
-            details: [
-                'Тривалість: 1.5-2 години',
-                'Знеболення: крем-анестетик',
-                'Періодичність: 1-2 роки',
-                'Відновлення кольору'
-            ],
-            price: 'від 2000 грн',
-            image: '/images/correction.jpg'
-        },
-        {
-            icon: ' Consult',
-            title: 'Консультація та догляд',
-            description: 'Професійна консультація щодо догляду після процедур, підбору форми та кольору. Індивідуальний підхід до кожної клієнтки.',
-            details: [
-                'Тривалість: 30-45 хвилин',
-                'Безкоштовна консультація',
-                'Індивідуальний підхід',
-                'Рекомендації догляду'
-            ],
-            price: 'безкоштовно',
-            image: '/images/consultation.jpg'
+      );
+
+      // Анімація карток
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.fromTo(
+            card,
+            { y: 80, opacity: 0, scale: 0.9 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              delay: index * 0.1,
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
         }
-    ];
+      });
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Анімація заголовка
-            gsap.fromTo(titleRef.current,
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: titleRef.current,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
+      // Анімація для активної картки
+      if (cardsRef.current[activeService]) {
+        gsap.to(cardsRef.current[activeService], {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+    }, sectionRef);
 
-            // Анімація карток
-            cardsRef.current.forEach((card, index) => {
-                if (card) {
-                    gsap.fromTo(card,
-                        { y: 80, opacity: 0, scale: 0.9 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.8,
-                            delay: index * 0.1,
-                            scrollTrigger: {
-                                trigger: card,
-                                start: 'top 90%',
-                                toggleActions: 'play none none reverse'
-                            }
-                        }
-                    );
-                }
-            });
+    return () => ctx.revert();
+  }, [activeService]);
 
-            // Анімація для активної картки
-            if (cardsRef.current[activeService]) {
-                gsap.to(cardsRef.current[activeService], {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            }
-        }, sectionRef);
+  return (
+    <section
+      ref={sectionRef}
+      id="services"
+      className="py-20 md:py-28 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
+    >
+      {/* Декоративні елементи */}
+      <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-40"></div>
+      <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-30"></div>
 
-        return () => ctx.revert();
-    }, [activeService]);
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Заголовок секції */}
+        <div className="text-center mb-16">
+          <h2
+            ref={titleRef}
+            className="text-4xl md:text-5xl font-bold text-gray-300 mb-4"
+          >
+            Наші <span className="text-amber-500">послуги</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Професійні послуги перманентного макіяжу від досвідчених майстрів з
+            використанням якісних матеріалів
+          </p>
+        </div>
 
-    return (
-        <section ref={sectionRef} id="services" className="py-20 md:py-28 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-            {/* Декоративні елементи */}
-            <div className="absolute top-50 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-40"></div>
-            <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-30"></div>
+        {/* Сітка послуг */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className={`bg-black/50 rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
+                activeService === index
+                  ? "border-amber-600 shadow-xl scale-105"
+                  : "border-gray-700 hover:border-amber-200 hover:shadow-xl"
+              }`}
+              onClick={() => setActiveService(index)}
+              onMouseEnter={() => setActiveService(index)}
+            >
+              <div className="text-4xl mb-4 text-center group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
+              </div>
 
-            <div className="container mx-auto px-4 relative z-10">
-                {/* Заголовок секції */}
-                <div className="text-center mb-16">
-                    <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-gray-300 mb-4">
-                        Наші <span className="text-amber-500">послуги</span>
-                    </h2>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Професійні послуги перманентного макіяжу від досвідчених майстрів з використанням якісних матеріалів
-                    </p>
-                </div>
+              <h3 className="text-xl font-semibold text-gray-400 mb-3 text-center">
+                {service.title}
+              </h3>
 
-                {/* Сітка послуг */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {services.map((service, index) => (
-                        <div
-                            key={index}
+              <p className="text-gray-500 mb-4 text-center">
+                {service.description}
+              </p>
 
-                            className={`bg-black/50 rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
-                                activeService === index
-                                    ? 'border-amber-600 shadow-xl scale-105'
-                                    : 'border-gray-700 hover:border-amber-200 hover:shadow-xl'
-                            }`}
-                            onClick={() => setActiveService(index)}
-                            onMouseEnter={() => setActiveService(index)}
-                        >
-                            <div className="text-4xl mb-4 text-center group-hover:scale-110 transition-transform duration-300">
-                                {service.icon}
-                            </div>
+              <div className="mb-4">
+                {service.details.map((detail, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center text-sm text-gray-500 mb-2"
+                  >
+                    <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                    {detail}
+                  </div>
+                ))}
+              </div>
 
-                            <h3 className="text-xl font-semibold text-gray-400 mb-3 text-center">
-                                {service.title}
-                            </h3>
+              <div className="text-center mt-4">
+                <span className="text-2xl font-bold text-amber-600">
+                  {service.price}
+                </span>
+              </div>
 
-                            <p className="text-gray-500 mb-4 text-center">
-                                {service.description}
-                            </p>
-
-                            <div className="mb-4">
-                                {service.details.map((detail, i) => (
-                                    <div key={i} className="flex items-center text-sm text-gray-500 mb-2">
-                                        <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
-                                        {detail}
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="text-center mt-4">
-                                <span className="text-2xl font-bold text-amber-600">{service.price}</span>
-                            </div>
-
-                            <button className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 font-semibold py-3 rounded-lg mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                Детальніше
-                            </button>
-                        </div>
-                    ))}
-                </div>
+              <button className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 font-semibold py-3 rounded-lg mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                Детальніше
+              </button>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

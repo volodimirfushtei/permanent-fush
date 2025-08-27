@@ -30,15 +30,22 @@ body {
   --font-script: "Dancing Script", cursive;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-serif), serif;
 }
 span {
   font-family: var(--font-script), serif;
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .floating {
@@ -54,4 +61,5 @@ span {
 
 .fade-in-up.visible {
   opacity: 1;
-  transform: translateY(0);}
+  transform: translateY(0);
+}

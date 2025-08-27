@@ -1,9 +1,30 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig: import('next').NextConfig = {
-    turbopack: {
-        root: __dirname, // завжди корінь цього проєкту
-    },
+const nextConfig: import("next").NextConfig = {
+  turbopack: {
+    root: __dirname, // завжди корінь цього проєкту
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          }
+        ],
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;

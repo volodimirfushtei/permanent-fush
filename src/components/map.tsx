@@ -21,29 +21,28 @@ const pinSvg = `
 `;
 
 export const customPin = L.divIcon({
-    html: pinSvg,
-    className: "",          // обов'язково порожній, щоб не отримати default leaflet class
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],  // точка, де "тримається" pin
-    popupAnchor: [0, -35],
+  html: pinSvg,
+  className: "", // обов'язково порожній, щоб не отримати default leaflet class
+  iconSize: [40, 40],
+  iconAnchor: [20, 40], // точка, де "тримається" pin
+  popupAnchor: [0, -35],
 });
 
 export default function Map() {
-    return (
-        <MapContainer
-            center={[48.9415463, 24.6972177]} // Івано-Франківськ
-            zoom={13}
-            style={{ height: "260px", width: "100%", borderRadius: "16px" }}
-        >
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-                opacity={0.9}
-            />
-            <Marker position={[48.9415463, 24.6972177]} icon={customPin}>
-                <Popup>Івано-Франківськ📍</Popup>
-            </Marker>
-        </MapContainer>
-    );
+  return (
+    <MapContainer
+      center={[48.9415463, 24.6972177]} // Івано-Франківськ
+      zoom={13}
+      style={{ height: "260px", width: "100%", borderRadius: "16px" }}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+        opacity={0.9}
+      />
+      <Marker position={[48.9415463, 24.6972177]} icon={customPin}>
+        <Popup>Івано-Франківськ📍</Popup>
+      </Marker>
+    </MapContainer>
+  );
 }
-
