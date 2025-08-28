@@ -45,13 +45,7 @@ function Hero({ children }: HeroProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-  // Створюємо ref для кожної картинки
-  const imageRef1 = useRef<HTMLImageElement>(null);
-  const imageRef2 = useRef<HTMLImageElement>(null);
-  const imageRef3 = useRef<HTMLImageElement>(null);
-  const imageRef4 = useRef<HTMLImageElement>(null);
 
-  const imageRefs = [imageRef1, imageRef2, imageRef3, imageRef4];
 
   useLayoutEffect(() => {
     setIsMounted(true);
@@ -133,41 +127,7 @@ function Hero({ children }: HeroProps) {
         },
       );
 
-      // Анімація картинок при скролі
-      imageRefs.forEach((imgRef, index) => {
-        if (imgRef.current) {
-          const anim = images[index].animation;
-          gsap.to(imgRef.current, {
-            x: anim.x,
-            rotation: anim.rotation,
-            opacity: 0,
-            scrollTrigger: {
-              trigger: heroRef.current,
-              start: "bottom bottom",
-              end: "bottom top",
-              scrub: 1.5,
-            },
-          });
-        }
-      });
 
-      // Поява картинок
-      const imageElements = imageRefs
-        .map((ref) => ref.current)
-        .filter(Boolean) as HTMLImageElement[];
-      gsap.fromTo(
-        imageElements,
-        { opacity: 0, scale: 0.8, y: 50 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 1.5,
-          stagger: 0.3,
-          ease: "back.out(1.7)",
-          delay: 0.8,
-        },
-      );
 
       // Плаваючі елементи
       if (heroRef.current) {
@@ -241,32 +201,6 @@ function Hero({ children }: HeroProps) {
           </button>
         </div>
       </div>
-
-      {/* Картинки з анімацією */}
-      <img
-        ref={imageRef1}
-        src={images[0].image}
-        alt="Creative design"
-        className={`${images[0].className} floating-element`}
-      />
-      <img
-        ref={imageRef2}
-        src={images[1].image}
-        alt="Innovative solutions"
-        className={`${images[1].className} floating-element`}
-      />
-      <img
-        ref={imageRef3}
-        src={images[2].image}
-        alt="Digital experience"
-        className={`${images[2].className} floating-element`}
-      />
-      <img
-        ref={imageRef4}
-        src={images[3].image}
-        alt="Creative process"
-        className={`${images[3].className} floating-element`}
-      />
 
       {/* Додаткові декоративні елементи */}
       <div className="absolute bottom-10 left-10 w-12 h-12 rounded-full bg-yellow-500/20 floating-element"></div>
