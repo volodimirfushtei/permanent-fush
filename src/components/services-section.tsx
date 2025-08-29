@@ -179,7 +179,7 @@ export default function ServicesSection({ children }: ServicesSectionProps) {
             ))}
           </div>
 
-          {/* Решта коду залишається без змін */}
+
           <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (

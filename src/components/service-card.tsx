@@ -35,7 +35,7 @@ export default function ServiceCard({
             }}
             className="group bg-gray-800/50 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-amber-400/30 transition-all duration-500 hover:-translate-y-2"
         >
-            <div className="relative w-full h-68 mb-4">
+            <div className="relative w-full h-48 sm:h-64 mb-4">
                 <Image
                     fill
                     loading="lazy"
@@ -66,7 +66,7 @@ export default function ServiceCard({
             <div className="mt-4">
                 <button
                     onClick={() => onToggle(index)}
-                    className="text-amber-400 font-medium flex items-center hover:text-amber-300 transition-colors duration-300 cursor-pointer"
+                    className="relative z-10 text-amber-400 font-medium flex items-center hover:text-amber-300 transition-colors duration-300 cursor-pointer"
                 >
                     {isExpanded ? "Згорнути" : "Детальніше"}
                     <svg
