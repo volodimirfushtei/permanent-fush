@@ -179,6 +179,7 @@ function Hero({ children }: HeroProps) {
           >
             Fush
           </h1>
+
           <h2
             ref={subtitleRef}
             className="text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10"
@@ -187,7 +188,8 @@ function Hero({ children }: HeroProps) {
           </h2>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
           <button
             ref={buttonRef}
             className="group relative bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"

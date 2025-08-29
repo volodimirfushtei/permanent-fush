@@ -29,16 +29,18 @@ const dancing = Dancing_Script({
   display: "swap",
 });
 
+
 export const metadata: Metadata = {
-  title: 'Permanent Fush - Опис вашого проекту',
-  description: 'Детальний опис вашого проекту для пошукових систем. Ключові слова: next.js, react, ваші ключові слова',
-  keywords: 'next.js, react, перманент',
-  authors: [{ name: 'Julia Fushtei' }],
+  title: 'FUSH - Перманентний макіяж та брови у Києві',
+  description: 'Професійне пудрове напилення брів, видалення перманентного макіяжу, ламінування вій. Якісні послуги у Києві.',
+  keywords: 'перманентний макіяж, пудрове напилення брів, ламінування вій, видалення перманентного макіяжу, Київ',
+  authors: [{ name: 'FUSH' }],
   openGraph: {
-    title: 'Permanent Fush',
-    description: 'Опис вашого проекту',
+    title: 'FUSH - Перманентний макіяж',
+    description: 'Професійні послуги перманентного макіяжу у Києві',
     type: 'website',
     locale: 'uk_UA',
+    images: ['/og-image.jpg'],
   },
 }
 

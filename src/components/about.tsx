@@ -120,7 +120,7 @@ export default function AboutSection({}: AboutSectionProps) {
             {/* Experience badge */}
             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
               <div className="text-3xl font-bold text-amber-600">
-                <span className="count" data-target="8">
+                <span className="count" data-target="1">
                   0
                 </span>
                 +
@@ -132,11 +132,11 @@ export default function AboutSection({}: AboutSectionProps) {
           {/* Контент */}
           <div ref={contentRef} className="lg:pl-8">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-400 mb-6">
-              Наша <span className="text-amber-700">історія</span> та философія
+              Наша <span className="text-amber-700">історія</span> та філософія
             </h2>
 
             <p className="text-lg text-gray-500 mb-6 leading-relaxed">
-              Permanent Studio - це місце, де ми створюємо красу, що залишається
+              Permanent Fush - це місце, де ми створюємо красу, що залишається
               з вами надовго. Наша місія - допомогти кожній жінці відчути себе
               впевненою та привабливою.
             </p>
