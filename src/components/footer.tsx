@@ -52,7 +52,7 @@ export default function Footer({ children }: FooterProps) {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/fushtei.pm?igsh=MTk0N3V0aWdteG9ocA=="
+                href="https://www.instagram.com/fush.if/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-rose-500 transition-colors duration-300"

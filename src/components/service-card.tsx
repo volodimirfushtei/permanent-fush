@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { gsap } from "gsap";
+
 import Image from "next/image";
 
 interface ServiceCardProps {

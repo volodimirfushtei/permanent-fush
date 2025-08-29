@@ -194,7 +194,7 @@ export default function NavBar({ children }: NavBarProps) {
               <a
                 ref={iconRef}
                 className="p-2 bg-gradient-to-r from-amber-500/10 to-yellow-400/10 border border-amber-500/20 rounded-full hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300 group"
-                href="https://www.instagram.com/fushtei_y/"
+                href="https://www.instagram.com/fush.if/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -288,7 +288,7 @@ export default function NavBar({ children }: NavBarProps) {
                 +380979600057
               </a>
               <a
-                href="https://www.instagram.com/fushtei.pm?igsh=MTk0N3V0aWdteG9ocA=="
+                href="https://www.instagram.com/fush.if/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-white text-lg opacity-80 hover:opacity-100 transition-opacity"
@@ -296,7 +296,7 @@ export default function NavBar({ children }: NavBarProps) {
                 <span className="w-6 h-6 bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full flex items-center justify-center mr-3">
                   <span className="w-3 h-3 bg-black rounded-full"></span>
                 </span>
-                @fushtei.pm
+                @fush.if
               </a>
             </div>
           </div>
