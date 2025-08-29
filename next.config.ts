@@ -1,6 +1,15 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig: import("next").NextConfig = {
+  experimental: {
+    optimizeCss: true,
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+
+
   turbopack: {
     root: __dirname, // завжди корінь цього проєкту
   },

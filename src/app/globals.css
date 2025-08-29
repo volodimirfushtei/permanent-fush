@@ -35,9 +35,7 @@ h2,
 h3 {
   font-family: var(--font-serif), serif;
 }
-span {
-  font-family: var(--font-script), serif;
-}
+
 @keyframes float {
   0%,
   100% {

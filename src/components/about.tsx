@@ -95,7 +95,7 @@ export default function AboutSection({}: AboutSectionProps) {
     <section
       ref={sectionRef}
       id="about"
-      className="h-screen py-20 md:py-28 bg-black/80 relative overflow-hidden"
+      className="min-h-screen py-20 md:py-28 bg-black/80 relative overflow-hidden"
     >
       <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-8">
         Про нас
