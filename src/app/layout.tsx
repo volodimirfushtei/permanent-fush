@@ -62,6 +62,7 @@ export default function RootLayout({
           name="google-site-verification"
           content={process.env.GOOGLE_VERIFICATION_CODE}
       />
+      <meta name="format-detection" content="telephone=no" />
     </head>
       <body className="font-sans antialiased">
         {/* Навбар поверх усіх секцій */}

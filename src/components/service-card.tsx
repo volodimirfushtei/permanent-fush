@@ -65,6 +65,7 @@ export default function ServiceCard({
 
             <div className="mt-4">
                 <button
+                    type="button"
                     onClick={() => onToggle(index)}
                     className="relative z-10 text-amber-400 font-medium flex items-center hover:text-amber-300 transition-colors duration-300 cursor-pointer"
                 >
