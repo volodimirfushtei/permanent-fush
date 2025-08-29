@@ -58,6 +58,10 @@ export default function RootLayout({
       <title>Permanent Fush</title>
       <StructuredData />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta
+          name="google-site-verification"
+          content={process.env.GOOGLE_VERIFICATION_CODE}
+      />
     </head>
       <body className="font-sans antialiased">
         {/* Навбар поверх усіх секцій */}
