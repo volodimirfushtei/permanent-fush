@@ -288,7 +288,7 @@ export default function NavBar({ children }: NavBarProps) {
                 +380979600057
               </a>
               <a
-                href="https://www.instagram.com/fushtei.pm/"
+                href="https://www.instagram.com/fushtei.pm?igsh=MTk0N3V0aWdteG9ocA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-white text-lg opacity-80 hover:opacity-100 transition-opacity"
