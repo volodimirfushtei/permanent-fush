@@ -11,32 +11,7 @@ export interface HeroProps {
   children?: React.ReactNode;
 }
 
-const images = [
-  {
-    image: "/images/mineral_pink.png",
-    className:
-      "w-72 h-52 md:w-60 md:h-50 lg:w-86 lg:h-72 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
-    animation: { x: -1000, rotation: -25, z: 100 },
-  },
-  {
-    image: "/images/IMG_3668.JPEG",
-    className:
-      "w-74 h-48 md:w-92 md:h-56 lg:w-84 lg:h-64 absolute top-[8%] right-[15%] md:right-[20%] object-cover rounded-xl shadow-2xl z-20",
-    animation: { x: 1000, rotation: 15, z: 100 },
-  },
-  {
-    image: "/images/mineral_remover.png",
-    className:
-      "w-60 h-44 md:w-68 md:h-52 lg:w-90 lg:h-70 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
-    animation: { x: -800, rotation: -15, z: 100 },
-  },
-  {
-    image: "/images/IMG_3666.JPEG",
-    className:
-      "w-56 h-40 md:w-64 md:h-48 lg:w-86 lg:h-66 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
-    animation: { x: 800, rotation: 10, z: 100 },
-  },
-];
+
 
 function Hero({ children }: HeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
