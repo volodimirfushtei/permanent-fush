@@ -167,13 +167,13 @@ function Hero({ children }: HeroProps) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
           <button
             ref={buttonRef}
-            className="group relative bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
+            className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
           >
             <span className="relative z-10">Зпис на консультацію</span>
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
 
-          <button className="group relative border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
+          <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
             <span className="relative z-10">Переглянути роботи</span>
           </button>
         </div>
@@ -186,7 +186,7 @@ function Hero({ children }: HeroProps) {
 
       {/* Індикатор скролу */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <span className="text-gray-200 text-xl mb-2 animate-bounce">
+        <span className="text-gray-200 text-sm mb-2 animate-bounce">
           Scroll Down
         </span>
       </div>

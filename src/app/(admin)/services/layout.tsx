@@ -1,18 +1,21 @@
-"use client";
 
-import { ReactNode } from "react";
-import { usePathname } from "next/navigation";
+import React from "react";
 import NavBar from "@/components/nav-bar";
+export default function RootLayout({
+                                       children,
 
-export default function Layout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
+                                   }: {
+    children: React.ReactNode;
 
-  return (
-    <>
-      <NavBar />
-      <main key={pathname} className="flex flex-col w-screen">
-        {children}
-      </main>
-    </>
-  );
+}) {
+    return (
+        <div>
+        <NavBar />
+        {/* Додайте key пропи */}
+        {React.Children.map(children, (child, index) => (
+            <div key={index}>{child}</div>
+        ))}
+
+        </div>
+    );
 }

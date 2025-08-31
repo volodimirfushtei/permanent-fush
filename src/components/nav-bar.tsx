@@ -160,6 +160,7 @@ export default function NavBar({ children }: NavBarProps) {
                   { label: "About", path: "/about" },
                   { label: "Services", path: "/services" },
                   { label: "Contacts", path: "/contacts" },
+
                 ].map((item, index) => (
                   <li
                     key={item.label}

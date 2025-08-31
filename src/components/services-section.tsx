@@ -1,13 +1,14 @@
-// components/ServicesSection.tsx
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServiceCard from "./service-card";
+import { Service } from "@/data/services";
 
-export interface ServicesSectionProps {
+interface ServicesSectionProps {
   children?: React.ReactNode;
+  services: Service[];
 }
 
 // Реєструємо плагін ScrollTrigger
@@ -15,15 +16,22 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function ServicesSection({ children }: ServicesSectionProps) {
+export default function ServicesSection({ children, services }: ServicesSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
+  // Ініціалізуємо масив посилань
+  useEffect(() => {
+    cardsRef.current = cardsRef.current.slice(0, services.length);
+  }, [services.length]);
+
   // Додаємо посилання до масиву
   const addToRefs = (el: HTMLDivElement | null, index: number) => {
-    cardsRef.current[index] = el;
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current[index] = el;
+    }
   };
 
   const toggleDetails = (index: number) => {
@@ -32,21 +40,23 @@ export default function ServicesSection({ children }: ServicesSectionProps) {
 
   useEffect(() => {
     // Анімація для заголовка
-    gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-    );
+    if (titleRef.current) {
+      gsap.fromTo(
+          titleRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+      );
+    }
 
     // Анімація для карток
     cardsRef.current.forEach((card, index) => {
@@ -86,7 +96,9 @@ export default function ServicesSection({ children }: ServicesSectionProps) {
           toggleActions: "play none none reverse",
         },
         onUpdate: () => {
-          counter.textContent = Math.floor(count.value) + "+";
+          if (counter.textContent !== null) {
+            counter.textContent = Math.floor(count.value) + "+";
+          }
         },
       });
     });
@@ -94,46 +106,7 @@ export default function ServicesSection({ children }: ServicesSectionProps) {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
-
-  const services = [
-    {
-      image: "/images/IMG_4578.PNG",
-      title: "Пудрове напилення брів",
-      description: "Сучасні мінеральні пігменти",
-      details: "Створення ефекту натуральних густих брів за допомогою техніки пудрового напилення. Використовуємо якісні пігменти європейського виробництва. Тривалість процедури: 2-3 години. Термін служби: 1-2 роки."
-    },
-    {
-      image: "/images/IMG_4578.PNG",
-      title: "Пудрове напилення губ",
-      description: "Ідеальний загоєний результат",
-      details: "Насичений колір губ з ефектом ombre. Ідеально підходить для корекції форми губ. Використовуємо гіпоалергенні пігменти. Тривалість: 2-3 години. Результат: 1-3 роки."
-    },
-    {
-      image: "/images/per_lashline.jpg",
-      title: "Макіяж міжвійкового простору",
-      description: "Створення ефекту густих вій",
-      details: "Підкреслення контуру очей, створення ефекту густих вій без щоденного макіяжу. Безпечна процедура для навіть найчутливіших очей. Тривалість: 1-1.5 години."
-    },
-    {
-      image: "/images/remover.jpg",
-      title: "Видалення перманентного макіяжу",
-      description: "Видалення ремувером",
-      details: "Професійне видалення неякісного або старого перманентного макіяжу. Використовуємо сучасні ремувери. Безболісна процедура. Кількість сеансів: 1-3."
-    },
-    {
-      image: "/images/lips.jpg",
-      title: "Корекція та фарбування брів",
-      description: "Якісні матеріали, корекція воском та пінцетом",
-      details: "Повний комплекс догляду за бровами: корекція форми, фарбування хною або фарбою, укладка. Використовуємо тільки професійні матеріали."
-    },
-    {
-      image: "/images/IMG_4578.PNG",
-      title: "Ламінування вій",
-      description: "Ламінування, фарбування та ботокс",
-      details: "Комплексний догляд за віями: ламінування для підкручування, фарбування для насиченого кольору, ботокс для живлення. Результат: 4-6 тижнів."
-    }
-  ];
+  }, [services]); // Додано services до залежностей
 
   const stats = [
     { number: 102, label: "Завершених робіт" },
@@ -167,18 +140,17 @@ export default function ServicesSection({ children }: ServicesSectionProps) {
 
           {/* Картки послуг */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 md:mb-28">
-            {services.map((service, index) => (
+            {services.map((service: Service, index: number) => (
                 <ServiceCard
-                    key={index}
+                    key={service.slug}
                     service={service}
                     index={index}
                     isExpanded={expandedCard === index}
-                    onToggle={toggleDetails}
+                    toggleDetails={() => toggleDetails(index)}
                     addToRefs={addToRefs}
                 />
             ))}
           </div>
-
 
           <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

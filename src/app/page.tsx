@@ -2,14 +2,16 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/footer";
 import ServicesSection from "@/components/services-section";
 import Prices from "@/components/prices";
+import { services } from "@/data/services";
 
 export default function Home() {
   return (
     <div className="font-sans overflow-hidden ">
       <main className="flex flex-col w-screen">
         <Hero />
-        <ServicesSection />
+
         <Prices />
+          <ServicesSection services={services} />
 
         <Footer />
       </main>

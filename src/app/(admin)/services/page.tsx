@@ -1,11 +1,17 @@
-import React from "react";
-import Services from "@/components/services-section";
 
-export interface PageProps {}
-export default function Page({}: PageProps) {
-  return (
-    <div>
-      <Services />
-    </div>
-  );
+"use client";
+
+import React from "react";
+import { services } from "@/data/services";
+import ServicesSection from "@/components/services-section";
+
+export default function Page() {
+    return (
+        <div>
+            <ServicesSection services={services} />
+        </div>
+    );
 }
+
+
+

@@ -31,6 +31,8 @@ const dancing = Dancing_Script({
 
 
 export const metadata: Metadata = {
+
+  metadataBase: new URL("https://permanent-fush.vercel.app/"),
   title: 'FUSH - Перманентний макіяж та брови у Києві',
   description: 'Професійне пудрове напилення брів, видалення перманентного макіяжу, ламінування вій. Якісні послуги у Києві.',
   keywords: 'перманентний макіяж, пудрове напилення брів, ламінування вій, видалення перманентного макіяжу, Київ',
@@ -41,6 +43,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'uk_UA',
     images: ['/og-image.jpg'],
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
 }
 
