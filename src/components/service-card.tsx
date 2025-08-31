@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Service } from "@/data/services";
-
+import Image from "next/image";
 interface ServiceCardProps {
     service: Service;
     index?: number;
@@ -17,9 +17,13 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     return (
 
             <div className="group bg-gray-800/50 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-amber-400/30 transition-all duration-500 hover:-translate-y-2">
-                <img
+                <Image
+                    width={400}
+                    height={300}
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-full h-56 object-cover rounded-lg mb-4 transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <h2 className="text-xl font-semibold group-hover:text-amber-300 transition">

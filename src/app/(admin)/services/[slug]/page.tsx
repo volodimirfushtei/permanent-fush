@@ -2,6 +2,7 @@
 import { services } from "@/data/services";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ServiceDetailsPageProps {
     params: { slug: string };
@@ -13,8 +14,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
-    const { slug } = params;
+export default async function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
+    const { slug } = await params;
     const service = services.find((s) => s.slug === slug);
 
     if (!service) {
@@ -26,10 +27,14 @@ export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) 
             {/* Hero Section */}
             <section className="relative h-64 md:h-96 w-full overflow-hidden">
                 <div className="absolute inset-0">
-                    <img
+                    <Image
+                        width={1920}
+                        height={300}
                         src={service.image}
                         alt={service.title}
                         className="w-full h-full object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                 </div>

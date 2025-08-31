@@ -72,8 +72,8 @@ export default function ServicesSection({ children, services }: ServicesSectionP
               delay: index * 0.2,
               scrollTrigger: {
                 trigger: card,
-                start: "top 85%",
-                end: "bottom 20%",
+                start: "top ",
+                end: "bottom ",
                 toggleActions: "play none none reverse",
               },
             }
