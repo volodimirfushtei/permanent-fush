@@ -133,11 +133,7 @@ export default function BrowsCoursePage() {
     { number: 1000, label: "Годин практики", suffix: "+" }
   ];
 
-  const reviews = [
-    { name: "Анна Коваленко", rating: 5, text: "Пройшла курс місяць тому, вже маю стабільних клієнтів. Якісні матеріали та підтримка куратора!", avatar: "/api/placeholder/40/40" },
-    { name: "Ірина Петренко", rating: 5, text: "Навчалась у інших, але тут найкращий підхід. Все зрозуміло та доступно, навіть для новачків.", avatar: "/api/placeholder/40/40" },
-    { name: "Оксана Шевченко", rating: 5, text: "Після курсу відкрила свій кабінет. Дякую за бізнес-консультації та підтримку!", avatar: "/api/placeholder/40/40" }
-  ];
+
 
   const packages = [
     {
