@@ -9,11 +9,11 @@ if (typeof window !== "undefined") {
 }
 
 export default function AboutSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef =  useRef<HTMLDivElement>(null!);
   const refs = {
-    image: useRef<HTMLDivElement | null>(null),
-    content: useRef<HTMLDivElement | null>(null),
-    stats: useRef<HTMLDivElement | null>(null),
+    image:  useRef<HTMLDivElement>(null!),
+    content:  useRef<HTMLDivElement>(null!),
+    stats:  useRef<HTMLDivElement>(null!),
   };
 
   useEffect(() => {
