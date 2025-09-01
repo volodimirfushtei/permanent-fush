@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServiceCard from "./service-card";
-import { Service } from "@/data/services";
+import { Service } from "@/data/favors";
 
 interface ServicesSectionProps {
   children?: React.ReactNode;

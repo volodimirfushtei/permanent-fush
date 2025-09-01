@@ -4,7 +4,7 @@ export function StructuredData() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BeautySalon',
-        name: 'ГUSH',
+        name: 'FUSH',
         description: 'Салон перманентного макіяжу у Києві',
         url: 'https://permanent-fush.vercel.app',
         telephone: '+380-XX-XXX-XX-XX',
