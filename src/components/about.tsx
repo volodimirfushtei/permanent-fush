@@ -67,25 +67,7 @@ export default function AboutSection({}: AboutSectionProps) {
         },
       );
 
-      // Анімація чисел
-      const counters = document.querySelectorAll(".count");
-      counters.forEach((counter) => {
-        const target = +counter.getAttribute("data-target")!;
-        const count = { value: 0 };
 
-        gsap.to(count, {
-          value: target,
-          duration: 2,
-          scrollTrigger: {
-            trigger: counter,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          onUpdate: () => {
-            counter.textContent = Math.floor(count.value).toString();
-          },
-        });
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -117,16 +99,6 @@ export default function AboutSection({}: AboutSectionProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
 
-            {/* Experience badge */}
-            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-              <div className="text-3xl font-bold text-amber-600">
-                <span className="count" data-target="1">
-                  0
-                </span>
-                +
-              </div>
-              <div className="text-sm text-gray-600">Років досвіду</div>
-            </div>
           </div>
 
           {/* Контент */}
