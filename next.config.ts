@@ -1,17 +1,26 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig: import("next").NextConfig = {
+const path = require('path');
+
+const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-
-
-
+  webpack: (config: { resolve: { alias: any; }; }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'src'),
+      '@data': path.resolve(__dirname, 'src/data'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@types': path.resolve(__dirname, 'src/types'),
+    };
+    return config;
+  },
   turbopack: {
-    root: __dirname, // завжди корінь цього проєкту
+    root: __dirname,
   },
   async headers() {
     return [
@@ -37,3 +46,4 @@ const nextConfig: import("next").NextConfig = {
 };
 
 module.exports = nextConfig;
+
