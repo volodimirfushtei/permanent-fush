@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { services } from "../../../../data/services";
+import { services } from "@/data/services";
 import ServicesSection from "@/components/services-section";
 
 export default function Page() {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Service } from "../../data/services";
+import { Service } from "@/data/services";
 import Image from "next/image";
 interface ServiceCardProps {
     service: Service;

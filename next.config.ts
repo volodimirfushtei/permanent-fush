@@ -1,4 +1,3 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const path = require('path');
 
@@ -19,10 +18,7 @@ const nextConfig = {
     };
     return config;
   },
-  turbopack: {
-    root: __dirname,
-  },
-  async headers() {
+  headers: async () => {
     return [
       {
         source: '/(.*)',
@@ -41,9 +37,13 @@ const nextConfig = {
           }
         ],
       },
-    ]
+    ];
+  },
+  turbopack: {
+    root: __dirname,
   },
 };
 
 module.exports = nextConfig;
+
 
