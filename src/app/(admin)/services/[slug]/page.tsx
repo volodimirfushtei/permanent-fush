@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
-    const { slug } = await params;
+    const { slug } =  params;
     const service = services.find((s) => s.slug === slug);
 
     if (!service) {
@@ -29,12 +29,13 @@ export default async function ServiceDetailsPage({ params }: ServiceDetailsPageP
                 <div className="absolute inset-0">
                     <Image
                         width={1920}
-                        height={300}
+                        height={1080}
+                        priority
                         src={service.image}
                         alt={service.title}
                         className="w-full h-full object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        loading="lazy"
+
                     />
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                 </div>
