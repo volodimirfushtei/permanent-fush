@@ -14,7 +14,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
+export default  function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
     const { slug } =  params;
     const service = services.find((s) => s.slug === slug);
 
