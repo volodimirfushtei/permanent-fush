@@ -11,7 +11,7 @@ export default function Home() {
         <Hero />
 
         <Prices />
-          <ServicesSection services={services} />
+        <ServicesSection services={services} />
 
         <Footer />
       </main>

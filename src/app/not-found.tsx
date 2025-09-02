@@ -28,7 +28,7 @@ export default function NotFoundPage({ children }: NotFoundProps) {
           opacity: 1,
           duration: 1,
           ease: "elastic.out(1, 0.5)",
-        },
+        }
       );
 
       // Анімація цифр 404
@@ -42,7 +42,7 @@ export default function NotFoundPage({ children }: NotFoundProps) {
           duration: 1.2,
           delay: 0.3,
           ease: "back.out(1.7)",
-        },
+        }
       );
 
       // Анімація тексту
@@ -55,7 +55,7 @@ export default function NotFoundPage({ children }: NotFoundProps) {
           duration: 0.8,
           delay: 0.6,
           ease: "power2.out",
-        },
+        }
       );
 
       // Анімація кнопки
@@ -68,7 +68,7 @@ export default function NotFoundPage({ children }: NotFoundProps) {
           duration: 0.5,
           delay: 0.9,
           ease: "back.out(1.7)",
-        },
+        }
       );
 
       // Додаткові декоративні анімації

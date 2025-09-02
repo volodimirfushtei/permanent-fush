@@ -11,8 +11,7 @@ Next.js 15 застосунок з використанням Turbopack для �
 
 ### Опис
 
-
-```bash
+````bash
 
 Встановлення
 
@@ -83,3 +82,4 @@ permanent-fush/
 ├── package.json     # Залежності та скрипти
 ├── Dockerfile       # Конфігурація Docker
 └── README.md        # Документація
+````

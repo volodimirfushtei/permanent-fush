@@ -11,8 +11,6 @@ export interface HeroProps {
   children?: React.ReactNode;
 }
 
-
-
 function Hero({ children }: HeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -20,7 +18,6 @@ function Hero({ children }: HeroProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-
 
   useLayoutEffect(() => {
     setIsMounted(true);
@@ -56,7 +53,7 @@ function Hero({ children }: HeroProps) {
       gsap.fromTo(
         buttonRef.current,
         { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" },
+        { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" }
       );
       gsap.fromTo(
         titleRef.current,
@@ -77,7 +74,7 @@ function Hero({ children }: HeroProps) {
             end: "bottom top",
             scrub: 1.5,
           },
-        },
+        }
       );
 
       gsap.fromTo(
@@ -99,10 +96,8 @@ function Hero({ children }: HeroProps) {
             end: "bottom top",
             scrub: 1.5,
           },
-        },
+        }
       );
-
-
 
       // Плаваючі елементи
       if (heroRef.current) {
@@ -162,7 +157,6 @@ function Hero({ children }: HeroProps) {
             Ф'юш
           </h2>
         </div>
-
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
           <button

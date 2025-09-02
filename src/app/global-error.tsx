@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "@/components/globalerror.module.css";
 interface GlobalErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
@@ -216,17 +215,10 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             }
           }
 
-          .animate-spin {
-            animation: spin 1s linear infinite;
-          }
+         
 
-          /* Спеціальні стилі для помилок */
-          .error-boundary {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
+          
+          
         `}</style>
       </body>
     </html>

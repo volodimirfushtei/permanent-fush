@@ -28,7 +28,8 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "✏️",
       title: "Брови пудрова техніка",
-      description: "Створення ефекту ніжного пудрового макіяжу брів, що надає їм ідеальну форму та густоту.",
+      description:
+        "Створення ефекту ніжного пудрового макіяжу брів, що надає їм ідеальну форму та густоту.",
       details: [
         "Первинна процедура: 2500 ГРН",
         "Корекція: 1700 ГРН",
@@ -41,7 +42,8 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "👄",
       title: "Губи",
-      description: "Перманентний макіяж губ для яскравого контуру та природного відтінку.",
+      description:
+        "Перманентний макіяж губ для яскравого контуру та природного відтінку.",
       details: [
         "Первинна процедура: 2500 ГРН",
         "Корекція: 1700 ГРН",
@@ -54,7 +56,8 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "👁️",
       title: "Мікшейдинг",
-      description: "Створення ефекту натуральних волосинок за технологією hair stroke.",
+      description:
+        "Створення ефекту натуральних волосинок за технологією hair stroke.",
       details: [
         "Первинна процедура: 1800 ГРН",
         "Корекція: 900 ГРН",
@@ -80,7 +83,8 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "✨",
       title: "Рефреш (оновлення)",
-      description: "Оновлення існуючого перманентного макіяжу після 2.5 місяців.",
+      description:
+        "Оновлення існуючого перманентного макіяжу після 2.5 місяців.",
       details: [
         "Для брів: 2000 ГРН",
         "Для губ: 2000 ГРН",
@@ -93,7 +97,8 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "💫",
       title: "FUSH технологія",
-      description: "Інноваційна технологія перманентного макіяжу для природного результату.",
+      description:
+        "Інноваційна технологія перманентного макіяжу для природного результату.",
       details: [
         "Сучасна методика",
         "Натуральний вигляд",
@@ -120,7 +125,7 @@ export default function Prices({ children }: PricesProps) {
             start: "top 85%",
             toggleActions: "play none none reverse",
           },
-        },
+        }
       );
 
       // Анімація карток
@@ -140,7 +145,7 @@ export default function Prices({ children }: PricesProps) {
                 start: "top 90%",
                 toggleActions: "play none none reverse",
               },
-            },
+            }
           );
         }
       });

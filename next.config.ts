@@ -1,45 +1,43 @@
 /** @type {import('next').NextConfig} */
-import path from 'path';
+import path from "path";
 
 const nextConfig = {
-
   experimental: {
     optimizeCss: true,
-
   },
   images: {
     unoptimized: true, // <-- ключовий момент для статичного експорту
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
-  webpack: (config: { resolve: { alias: any; }; }) => {
+  webpack: (config: { resolve: { alias: any } }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'),
-      '@data': path.resolve(__dirname, 'src/data'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@types': path.resolve(__dirname, 'src/types'),
+      "@": path.resolve(__dirname, "src"),
+      "@data": path.resolve(__dirname, "src/data"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@types": path.resolve(__dirname, "src/types"),
     };
     return config;
   },
   headers: async () => {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY'
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          }
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
         ],
       },
     ];
@@ -50,5 +48,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-

@@ -24,7 +24,7 @@ export default function Footer({ children }: FooterProps) {
             start: "top 90%",
             toggleActions: "play none none reverse",
           },
-        },
+        }
       );
     }
   }, []);

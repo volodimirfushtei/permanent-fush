@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default function AdminError({
   error,
-
 }: {
   error: Error & { digest?: string };
   reset: () => void;

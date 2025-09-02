@@ -1,12 +1,10 @@
-// components/TestErrorBoundary.tsx
 "use client";
-
 import React, { useState } from "react";
+import ErrorBoundary from "./error-boundary";
 
 // Компонент, який кидає помилку
 const BuggyComponent = () => {
   throw new Error("Це тестова помилка!");
-  return <div>Цей контент ніколи не покажеться</div>;
 };
 
 // Компонент з кнопкою, яка кидає помилку
@@ -32,7 +30,7 @@ const ErrorButton = () => {
 };
 
 // Компонент для тестування
-const TestErrorBoundary = () => {
+const TestErrorBoundaryContent = () => {
   const [showBuggyComponent, setShowBuggyComponent] = useState(false);
 
   return (
@@ -40,7 +38,6 @@ const TestErrorBoundary = () => {
       <h1 className="text-3xl font-bold text-center mb-8">
         Тестування Error Boundary
       </h1>
-
       <div className="bg-black/80 rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">
           1. Компонент з помилкою при монтуванні
@@ -54,14 +51,12 @@ const TestErrorBoundary = () => {
             ? "Компонент вже показано"
             : "Показати компонент з помилкою"}
         </button>
-
         {showBuggyComponent && (
           <div className="border border-red-300 rounded p-4 mt-4">
             <BuggyComponent />
           </div>
         )}
       </div>
-
       <div className="bg-black/80 rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">
           2. Компонент з помилкою при кліку
@@ -70,7 +65,6 @@ const TestErrorBoundary = () => {
           <ErrorButton />
         </div>
       </div>
-
       <div className="bg-black/80 rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">
           3. Інструкції з тестування
@@ -104,7 +98,6 @@ const TestErrorBoundary = () => {
           </p>
         </div>
       </div>
-
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
         <div className="flex">
           <div className="flex-shrink-0">
@@ -131,6 +124,15 @@ const TestErrorBoundary = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// Обгортаємо компонент в ErrorBoundary
+const TestErrorBoundary = () => {
+  return (
+    <ErrorBoundary>
+      <TestErrorBoundaryContent />
+    </ErrorBoundary>
   );
 };
 
