@@ -7,6 +7,9 @@ const nextConfig = {
     optimizeCss: true,
 
   },
+  images: {
+    unoptimized: true, // <-- ключовий момент для статичного експорту
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
