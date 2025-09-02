@@ -2,7 +2,7 @@
 import path from 'path';
 
 const nextConfig = {
-  output: 'export', // для статичного експорту
+
   experimental: {
     optimizeCss: true,
 
