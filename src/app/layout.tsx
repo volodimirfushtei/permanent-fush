@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import Script from 'next/script';
 
 import PageTransition from "@/components/page-transition";
 import "./globals.css";
@@ -68,6 +68,18 @@ export default function RootLayout({
           content={process.env.GOOGLE_VERIFICATION_CODE}
       />
       <meta name="format-detection" content="telephone=no" />
+      <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-XKWKVJCLZW`}
+          strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XKWKVJCLZW');
+          `}
+      </Script>
     </head>
       <body className="font-sans antialiased">
         {/* Навбар поверх усіх секцій */}

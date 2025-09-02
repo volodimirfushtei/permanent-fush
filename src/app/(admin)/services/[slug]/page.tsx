@@ -49,7 +49,7 @@ export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) 
                         className="w-full h-full object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/20"></div>
+                    <div className="absolute inset-0 bg-black/50"></div>
                 </div>
                 <div className="relative container mx-auto px-4 h-full flex items-end pb-12">
                     <div className="w-full max-w-3xl">

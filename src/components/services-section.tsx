@@ -115,20 +115,20 @@ export default function ServicesSection({ children, services }: ServicesSectionP
   return (
       <section
           ref={sectionRef}
-          className="relative py-20 md:py-28 bg-gradient-to-b from-gray-900 to-black overflow-hidden"
+          className="relative py-20 md:py-28 bg-gradient-to-b from-gray-950 to-black overflow-hidden"
       >
         {/* Декоративні елементи */}
-        <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 left-50 w-82 h-82 bg-yellow-400 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-30"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Заголовок секції */}
           <div className="text-center mb-16 md:mb-24">
             <h2
                 ref={titleRef}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-white to-amber-300 bg-clip-text mb-6"
+                className="text-4xl md:text-5xl font-bold text-gray-300 mb-4"
             >
-              Наші послуги
+              Наші <span className="text-amber-500">послуги</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Ми пропонуємо якісні послуги
