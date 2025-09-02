@@ -111,7 +111,7 @@ export const services: Service[] = [
     {
         id: "6",
         slug: "permanent-removal",
-        title: "Видалення перманентного макіяжу ремувером",
+        title: "Видалення перманенту ремувером",
         description:
             "Безпечний спосіб позбутися небажаного або невдалого татуажу.",
         details:

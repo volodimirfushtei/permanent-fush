@@ -8,8 +8,7 @@ interface ServiceCardProps {
     service: Service;
     index?: number;
     isExpanded: boolean; // Додайте цей пропс
-    toggleDetails: () => void; // Додайте цей пропс
-    addToRefs: (el: HTMLDivElement | null, index: number) => void;
+
 
 }
 
@@ -32,8 +31,9 @@ export default function ServiceCard({ service }: ServiceCardProps) {
                 <p className="text-gray-600 break-words line-clamp-3 mt-2">{service.description}</p>
                 <div className="mt-4">
                     <Link
+                        prefetch={false}
                         href={`/services/${service.slug}`}
-                        className="text-amber-400 font-medium flex items-center hover:text-amber-300 transition-colors duration-300"
+                        className="text-amber-400 font-medium flex cursor-pointer items-center hover:text-amber-300 transition-colors duration-300 py-3 px-4 service-link"
                     >
                         Детальніше
                         <svg

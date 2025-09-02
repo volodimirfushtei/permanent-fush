@@ -14,8 +14,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default  function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
-    const { slug } =  params;
+export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
+    const { slug } = params;
     const service = services.find((s) => s.slug === slug);
 
     if (!service) {
@@ -23,9 +23,22 @@ export default  function ServiceDetailsPage({ params }: ServiceDetailsPageProps)
     }
 
     return (
-        <div className="font-sans bg-gray-50 w-screen min-h-screen text-gray-900">
+        <div className="min-h-screen w-screen bg-gradient-to-br from-gray-900 to-black text-white mt-20">
+            {/* Navigation */}
+            <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
+                <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                    Permanent-Fush
+                </Link>
+                <Link
+                    href="/services"
+                    className="px-4 py-2 rounded-full border border-gray-700 hover:border-amber-400 transition-colors duration-300"
+                >
+                    ← До послуг
+                </Link>
+            </nav>
+
             {/* Hero Section */}
-            <section className="relative h-64 md:h-96 w-full overflow-hidden">
+            <section className="relative h-80 md:h-screen/2 w-full overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
                         width={1920}
@@ -35,87 +48,82 @@ export default  function ServiceDetailsPage({ params }: ServiceDetailsPageProps)
                         alt={service.title}
                         className="w-full h-full object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
                     />
-                    <div className="absolute inset-0 bg-black opacity-50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/20"></div>
                 </div>
-                <div className="relative container mx-auto px-4 h-full flex items-center justify-center text-center">
+                <div className="relative container mx-auto px-4 h-full flex items-end pb-12">
                     <div className="w-full max-w-3xl">
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
+                        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight ">
                             {service.title}
                         </h1>
-                        <div className="w-20 h-1 bg-amber-400 mx-auto"></div>
+                        <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+                            {service.description}
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Main Content */}
-            <main className="container mx-auto px-4 py-12 md:py-20 max-w-4xl">
+            <main className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
                 {/* Description Section */}
-                <section className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 transition-all duration-300 hover:shadow-2xl">
-                    <div className="p-6 md:p-8">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 border-b-2 border-amber-100 pb-2">
-                            Опис послуги
-                        </h2>
-                        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <section className="bg-gray-800/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-gray-700/50 mb-16 transition-all duration-500 hover:border-amber-400/30">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-white to-amber-300 bg-clip-text text-transparent">
+                        Детальний опис послуги
+                    </h2>
+                    <div className="prose prose-lg prose-invert max-w-none text-gray-300">
+                        <p className="text-xl leading-relaxed mb-8">
                             {service.description}
                         </p>
                         {service.details && (
-                            <div className="prose max-w-none text-gray-600 whitespace-pre-line">
+                            <div className="whitespace-pre-line text-gray-400">
                                 {service.details}
                             </div>
                         )}
                     </div>
                 </section>
 
-                {/* Duration Section */}
-                <section className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 transition-all duration-300 hover:shadow-2xl">
-                    <div className="p-6 md:p-8">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-amber-100 pb-2">
-                             Tривалість
-                        </h2>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-
-
-                            {/* Duration Card */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100 transition-all duration-300 hover:shadow-lg hover:border-amber-200">
-                                <div className="flex items-center justify-center mb-4">
-                                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-6 w-6 text-amber-600"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                </div>
-                                <p className="text-2xl font-bold text-gray-800 text-center">
-                                    {service.duration}
-                                </p>
+                {/* Duration & Details Section */}
+                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    {/* Duration Card */}
+                    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 border border-gray-700/50 transition-all duration-500 hover:border-amber-400/30">
+                        <div className="flex items-center mb-6">
+                            <div className="w-14 h-14 bg-amber-400/10 rounded-xl flex items-center justify-center mr-4">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-8 w-8 text-amber-400"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
                             </div>
+                            <h3 className="text-2xl font-bold text-white">Тривалість</h3>
                         </div>
+                        <p className="text-3xl font-bold text-amber-400 mb-2">
+                            {service.duration}
+                        </p>
+
                     </div>
+
+
                 </section>
 
                 {/* Additional Info */}
-                <section className="bg-amber-50 rounded-2xl p-6 md:p-8 mb-12">
+                <section className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-3xl p-8 md:p-10 mb-16 border border-amber-400/20">
                     <div className="flex items-start">
-                        <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <div className="w-14 h-14 bg-amber-400/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 text-amber-600"
+                                className="h-8 w-8 text-amber-400"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -129,28 +137,48 @@ export default  function ServiceDetailsPage({ params }: ServiceDetailsPageProps)
                             </svg>
                         </div>
                         <div>
-                            <p className="text-gray-700 text-sm md:text-base">
-                                ⚠️ Корекція виконується не раніше і не пізніше 2.5 місяців від первинної процедури. Якщо пізніше 2.5 місяців — робиться рефреш.
+                            <h3 className="text-xl font-bold text-white mb-4">Важлива інформація</h3>
+                            <p className="text-amber-100">
+                                ⚠️ Корекція виконується не раніше і не пізніше 2.5 місяців від первинної процедури.
+                                Якщо пізніше 2.5 місяців — робиться рефреш.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* CTA Section */}
+
+
+                {/* Back Button */}
                 <section className="text-center">
                     <Link
                         href="/services"
-                        className="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                        className="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium transition-colors duration-300 group"
                     >
-                        Повернутися до послуг
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Повернутися до всіх послуг
                     </Link>
                 </section>
             </main>
+
+            {/* Footer */}
+            <footer className="border-t border-gray-800 py-12">
+                <div className="container mx-auto px-4 text-center">
+                    <p className="text-gray-500">
+                        © {new Date().getFullYear()} BeautyStudio. Усі права захищені.
+                    </p>
+                </div>
+            </footer>
         </div>
     );
 }
-
-
 
 
 

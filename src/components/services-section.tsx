@@ -1,3 +1,4 @@
+// src/components/services-section.tsx (your component with minor fixes)
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
@@ -34,10 +35,6 @@ export default function ServicesSection({ children, services }: ServicesSectionP
     }
   };
 
-  const toggleDetails = (index: number) => {
-    setExpandedCard(expandedCard === index ? null : index);
-  };
-
   useEffect(() => {
     // Анімація для заголовка
     if (titleRef.current) {
@@ -72,8 +69,8 @@ export default function ServicesSection({ children, services }: ServicesSectionP
               delay: index * 0.2,
               scrollTrigger: {
                 trigger: card,
-                start: "top ",
-                end: "bottom ",
+                start: "top 85%",
+                end: "bottom 60%",
                 toggleActions: "play none none reverse",
               },
             }
@@ -141,14 +138,17 @@ export default function ServicesSection({ children, services }: ServicesSectionP
           {/* Картки послуг */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 md:mb-28">
             {services.map((service: Service, index: number) => (
-                <ServiceCard
+                <div
                     key={service.slug}
-                    service={service}
-                    index={index}
-                    isExpanded={expandedCard === index}
-                    toggleDetails={() => toggleDetails(index)}
-                    addToRefs={addToRefs}
-                />
+                    ref={el => addToRefs(el, index)}
+                    onClick={() => setExpandedCard(expandedCard === index ? null : index)}
+                >
+                  <ServiceCard
+                      service={service}
+                      index={index}
+                      isExpanded={expandedCard === index}
+                  />
+                </div>
             ))}
           </div>
 
