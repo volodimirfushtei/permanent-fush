@@ -2,8 +2,10 @@
 import path from 'path';
 
 const nextConfig = {
+  output: 'export', // для статичного експорту
   experimental: {
     optimizeCss: true,
+
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
