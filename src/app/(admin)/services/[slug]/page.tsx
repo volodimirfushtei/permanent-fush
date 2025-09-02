@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) {
-    const { slug } = params;
+    const { slug } =  params;
     const service = services.find((s) => s.slug === slug);
 
     if (!service) {
