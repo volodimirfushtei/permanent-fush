@@ -3,6 +3,7 @@ import path from "path";
 import { Configuration } from "webpack";
 
 const nextConfig = {
+  output: 'export',
   experimental: {
     optimizeCss: true,
   },
