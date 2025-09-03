@@ -22,7 +22,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className="w-full h-56 object-cover rounded-lg mb-4 transform group-hover:scale-105 transition-transform duration-500"
       />
-      <h2 className="text-xl font-semibold min-h-[4rem] break-words group-hover:text-amber-300 transition">
+      <h2 className="text-xl text-white font-semibold min-h-[4rem] break-words group-hover:text-amber-300 transition">
         {service.title}
       </h2>
       <p className="text-gray-600 break-words line-clamp-3 mt-2">

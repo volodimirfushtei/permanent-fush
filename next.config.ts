@@ -50,8 +50,7 @@ const nextConfig = {
       },
     ];
   },
-  // Turbopack не потребує додаткових налаштувань у next.config.ts для роботи.
-  // Якщо ви використовуєте Turbopack, ви можете видалити цей розділ.
+
 };
 
 module.exports = nextConfig;
