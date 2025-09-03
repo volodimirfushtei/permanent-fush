@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-
+import { ThemeProvider } from './theme-provider'
 import PageTransition from "@/components/page-transition";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
@@ -87,11 +87,13 @@ export default function RootLayout({
 
         {/* Контент сторінки */}
         <PageTransition>
+          <ThemeProvider>
           <main className="">
             {" "}
             {/* Додаємо відступ зверху для фіксованого навбара */}
             {children}
           </main>
+          </ThemeProvider>
         </PageTransition>
       </body>
     </html>

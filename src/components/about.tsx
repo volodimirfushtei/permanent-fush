@@ -63,7 +63,7 @@ export default function AboutSection() {
       {/* Декоративні елементи */}
       <div className="absolute top-10 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-30"></div>
       <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-20"></div>
-      <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-8">
+      <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-16">
         Про нас
       </h2>
       {/* Декор */}

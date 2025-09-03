@@ -25,7 +25,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       <h2 className="text-xl text-white font-semibold min-h-[4rem] break-words group-hover:text-amber-300 transition">
         {service.title}
       </h2>
-      <p className="text-gray-600 break-words line-clamp-3 mt-2">
+      <p className="text-gray-500 break-words line-clamp-3 mt-2">
         {service.description}
       </p>
       <div className="mt-4">

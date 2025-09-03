@@ -27,7 +27,7 @@ export default function Prices({ children }: PricesProps) {
   const services = [
     {
       icon: "✏️",
-      title: "Брови пудрова техніка",
+      title: "Перманентний макіяж брів",
       description:
         "Створення ефекту ніжного пудрового макіяжу брів, що надає їм ідеальну форму та густоту.",
       details: [
@@ -41,7 +41,7 @@ export default function Prices({ children }: PricesProps) {
     },
     {
       icon: "👄",
-      title: "Губи",
+      title: "Перманентний макіяж губ",
       description:
         "Перманентний макіяж губ для яскравого контуру та природного відтінку.",
       details: [
@@ -55,7 +55,7 @@ export default function Prices({ children }: PricesProps) {
     },
     {
       icon: "👁️",
-      title: "Мікшейдинг",
+      title: "Перманентний макіяж повік",
       description:
         "Створення ефекту натуральних волосинок за технологією hair stroke.",
       details: [
@@ -69,7 +69,7 @@ export default function Prices({ children }: PricesProps) {
     },
     {
       icon: "🔄",
-      title: "Корекція",
+      title: "Корекція та фарбування брів",
       description: "Професійна корекція існуючого перманентного макіяжу.",
       details: [
         "Виконується через 1-2.5 місяці",
@@ -96,16 +96,16 @@ export default function Prices({ children }: PricesProps) {
     },
     {
       icon: "💫",
-      title: "FUSH технологія",
+      title: "Видалення  ремувером",
       description:
-        "Інноваційна технологія перманентного макіяжу для природного результату.",
+        "Це безпечний спосіб позбутися небажаного або невдалого татуажу.",
       details: [
         "Сучасна методика",
-        "Натуральний вигляд",
-        "Європейські пігменти",
+        "Ефективне виведення пігменту",
+        "Збереження здоров’я та цілісності шкіри",
         "Довготривалий результат",
       ],
-      price: "індивідуально",
+      price: "700 ГРН",
       image: "/images/fush.jpg",
     },
   ];
@@ -231,9 +231,6 @@ export default function Prices({ children }: PricesProps) {
                 </span>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 font-semibold py-3 rounded-lg mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                Детальніше
-              </button>
             </div>
           ))}
         </div>

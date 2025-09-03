@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dynamic from "next/dynamic";
 
+import {  Send, MessageCircle } from "lucide-react";
+import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 const Map = dynamic(() => import("./map"), {
   ssr: false,
 });
@@ -35,6 +37,7 @@ export default function Contacts({ children }: ContactsProps) {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Анімація всієї сторінки
@@ -101,9 +104,7 @@ export default function Contacts({ children }: ContactsProps) {
   }, []);
 
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({
       ...formData,
@@ -111,18 +112,31 @@ export default function Contacts({ children }: ContactsProps) {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Тут буде логіка відправки форми
-    console.log("Form submitted:", formData);
-    alert("Дякуємо за заявку! Ми зв'яжемося з вами найближчим часом.");
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      service: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Симуляція відправки форми
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log("Form submitted:", formData);
+
+      // Тут буде реальна логіка відправки на сервер
+      alert("Дякуємо за заявку! Ми зв'яжемося з вами найближчим часом.");
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Помилка при відправці форми:", error);
+      alert("Сталася помилка. Спробуйте ще раз.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -133,7 +147,32 @@ export default function Contacts({ children }: ContactsProps) {
     "Корекція",
     "Консультація",
   ];
-
+  const socialLinks = [
+    {
+      icon: FaInstagram,
+      label: "Instagram",
+      href: "https://instagram.com",
+      color: "hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-600"
+    },
+    {
+      icon: FaFacebook,
+      label: "Facebook",
+      href: "https://facebook.com",
+      color: "hover:bg-blue-600"
+    },
+    {
+      icon: FaYoutube,
+      label: "YouTube",
+      href: "https://youtube.com",
+      color: "hover:bg-red-600"
+    },
+    {
+      icon: MessageCircle,
+      label: "Telegram",
+      href: "#",
+      color: "hover:bg-blue-500"
+    }
+  ];
   return (
     <div
       ref={pageRef}
@@ -266,10 +305,21 @@ export default function Contacts({ children }: ContactsProps) {
               </div>
 
               <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-amber-500/20"
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-semibold py-4 px-6 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-amber-500/25 disabled:opacity-50 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center gap-2"
               >
-                Надіслати повідомлення
+                {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      Відправка...
+                    </>
+                ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Надіслати повідомлення
+                    </>
+                )}
               </button>
             </form>
           </div>
@@ -287,7 +337,7 @@ export default function Contacts({ children }: ContactsProps) {
 
               <div
                 ref={mapRef}
-                className="bg-gray-800/40 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-700/50 shadow-xl h-80"
+                className="bg-gray-800/40 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-700/50 shadow-xl h-60"
               >
                 <Map />
               </div>
@@ -373,28 +423,22 @@ export default function Contacts({ children }: ContactsProps) {
             Приєднуйтесь до нашої спільноти в соціальних мережах
           </p>
 
-          <div className="flex justify-center space-x-6">
-            {[
-              {
-                icon: "📸",
-                label: "Instagram",
-                href: "https://www.instagram.com/perm.fush/",
-              },
-              { icon: "📘", label: "Facebook", href: "#" },
-              { icon: "📽️", label: "YouTube", href: "#" },
-              { icon: "💬", label: "Telegram", href: "#" },
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center hover:from-amber-500/20 hover:to-orange-600/20 transition-all duration-300 border border-gray-700/50 hover:border-amber-500/30 shadow-md hover:shadow-amber-500/10 hover:scale-110"
-                aria-label={social.label}
-              >
-                <span className="text-2xl">{social.icon}</span>
-              </a>
-            ))}
+          <div className="flex justify-center gap-6 flex-wrap">
+            {socialLinks.map((social, index) => {
+              const IconComponent = social.icon;
+              return (
+                  <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl flex items-center justify-center transition-all duration-300 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl hover:scale-110 ${social.color} group`}
+                      aria-label={social.label}
+                  >
+                    <IconComponent className="w-7 h-7 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+              );
+            })}
           </div>
         </div>
       </div>

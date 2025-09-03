@@ -3,7 +3,7 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import Link from 'next/link';
 // Реєструємо плагін ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +64,7 @@ function Hero({ children }: HeroProps) {
         },
         // to values (кінцевий стан)
         {
-          x: -100,
+          x: -20,
           opacity: 0,
           duration: 1.5,
           ease: "power2.out",
@@ -145,7 +145,7 @@ function Hero({ children }: HeroProps) {
         <div className="mb-6">
           <h1
             ref={titleRef}
-            className="text-7xl md:text-8xl mb-6 lg:text-9xl xl:text-[16rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2"
+            className="text-4xl md:text-5xl mb-6 lg:text-6xl xl:text-[10rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2"
           >
             Fush
           </h1>
@@ -159,13 +159,15 @@ function Hero({ children }: HeroProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
-          <button
-            ref={buttonRef}
-            className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
-          >
-            <span className="relative z-10">Зпис на консультацію</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
+          <Link href="/contacts" passHref>
+            <button
+                ref={buttonRef}
+                className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
+            >
+              <span className="relative z-10">Запис на консультацію</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+          </Link>
 
           <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
             <span className="relative z-10">Переглянути роботи</span>
