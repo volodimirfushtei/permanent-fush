@@ -114,7 +114,7 @@ export default function Footer({ children }: FooterProps) {
                   href="#"
                   className="text-gray-400 hover:text-amber-400 transition-colors duration-300"
                 >
-                  ПЕрманент губ
+                  Перманент губ
                 </a>
               </li>
               <li>

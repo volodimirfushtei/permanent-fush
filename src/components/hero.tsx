@@ -15,7 +15,7 @@ function Hero({ children }: HeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+
   const particlesRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -49,33 +49,7 @@ function Hero({ children }: HeroProps) {
         }
       }
 
-      // Кнопка
-      gsap.fromTo(
-        buttonRef.current,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" }
-      );
-      gsap.fromTo(
-        titleRef.current,
-        // from values (початковий стан)
-        {
-          x: 0,
-          opacity: 1,
-        },
-        // to values (кінцевий стан)
-        {
-          x: -20,
-          opacity: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1.5,
-          },
-        }
-      );
+
 
       gsap.fromTo(
         subtitleRef.current,
@@ -161,7 +135,7 @@ function Hero({ children }: HeroProps) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
           <Link href="/contacts" passHref>
             <button
-                ref={buttonRef}
+
                 className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
             >
               <span className="relative z-10">Запис на консультацію</span>
