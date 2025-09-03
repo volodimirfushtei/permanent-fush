@@ -226,7 +226,7 @@ export default function Footer({ children }: FooterProps) {
             </h3>
             <div className="space-y-2 text-gray-400">
               <div className="flex justify-between">
-                <span>Понеділок - П'ятниця</span>
+                <span>Понеділок - П&apos;ятниця</span>
                 <span>10:00 - 18:00</span>
               </div>
               <div className="flex justify-between">

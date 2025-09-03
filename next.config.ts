@@ -1,17 +1,24 @@
 /** @type {import('next').NextConfig} */
 import path from "path";
+import { Configuration } from "webpack";
 
 const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
   images: {
-    unoptimized: true, // <-- ключовий момент для статичного експорту
+    unoptimized: true, // Ключовий момент для статичного експорту
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  webpack: (config: { resolve: { alias: any } }) => {
+  webpack: (config: Configuration) => {
+    if (!config.resolve) {
+      config.resolve = {};
+    }
+    if (!config.resolve.alias) {
+      config.resolve.alias = {};
+    }
     config.resolve.alias = {
       ...config.resolve.alias,
       "@": path.resolve(__dirname, "src"),
@@ -42,9 +49,8 @@ const nextConfig = {
       },
     ];
   },
-  turbopack: {
-    root: __dirname,
-  },
+  // Turbopack не потребує додаткових налаштувань у next.config.ts для роботи.
+  // Якщо ви використовуєте Turbopack, ви можете видалити цей розділ.
 };
 
 module.exports = nextConfig;

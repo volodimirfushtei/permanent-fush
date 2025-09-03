@@ -154,7 +154,7 @@ function Hero({ children }: HeroProps) {
             ref={subtitleRef}
             className="text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10"
           >
-            Ф'юш
+            Ф&apos;юш
           </h2>
         </div>
 

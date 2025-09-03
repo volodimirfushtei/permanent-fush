@@ -151,8 +151,8 @@ export default function Contacts({ children }: ContactsProps) {
           </span>
         </h1>
         <p className="text-xl text-gray-400 text-center max-w-3xl mx-auto">
-          Зв'яжіться з нами для запису на консультацію або отримання додаткової
-          інформації
+          Зв&apos;яжіться з нами для запису на консультацію або отримання
+          додаткової інформації
         </p>
       </div>
 
@@ -171,7 +171,7 @@ export default function Contacts({ children }: ContactsProps) {
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-400 mb-3"
                   >
-                    Ім'я *
+                    Ім&apos;я *
                   </label>
                   <input
                     type="text"

@@ -1,10 +1,7 @@
 "use client";
-
 import { useEffect } from "react";
-
 export default function AdminError({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;

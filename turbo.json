@@ -1,0 +1,9 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "resolveAlias": {
+    "@/*": ["src/*"],
+    "@data/*": ["src/data/*"],
+    "@components/*": ["src/components/*"],
+    "@types/*": ["src/types/*"]
+  }
+}

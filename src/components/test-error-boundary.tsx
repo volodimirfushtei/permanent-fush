@@ -74,21 +74,22 @@ const TestErrorBoundaryContent = () => {
             <span className="inline-block bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">
               1
             </span>
-            Натисніть "Показати компонент з помилкою" - ErrorBoundary має
-            показати fallback UI
+            Натисніть &quot;Показати компонент з помилкою&quot; - ErrorBoundary
+            має показати fallback UI
           </p>
           <p className="flex items-start">
             <span className="inline-block bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">
               2
             </span>
-            Натисніть "Викликати помилку" - ErrorBoundary має показати fallback
-            UI
+            Натисніть &quot;Викликати помилку&quot;- ErrorBoundary має показати
+            fallback UI
           </p>
           <p className="flex items-start">
             <span className="inline-block bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">
               3
             </span>
-            У обох випадках натисніть "Спробувати знову" для скидання стану
+            У обох випадках натисніть &quot;Спробувати знову&quot; для скидання
+            стану
           </p>
           <p className="flex items-start">
             <span className="inline-block bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">

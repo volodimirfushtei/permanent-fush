@@ -181,7 +181,8 @@ export default function ServicesSection({
             Готові до перетворень?
           </h3>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Зв'яжіться з нами сьогодні та отримайте безкоштовну консультацію
+            Зв&apos;яжіться з нами сьогодні та отримайте безкоштовну
+            консультацію
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-semibold px-8 py-4 rounded-full hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300 transform hover:-translate-y-1">

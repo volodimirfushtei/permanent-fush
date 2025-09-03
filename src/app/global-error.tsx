@@ -81,7 +81,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             {/* Повідомлення про мережу */}
             {!isOnline && (
               <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded-lg mb-6">
-                <p>⚠️ Ви не в мережі. Перевірте інтернет-з'єднання.</p>
+                <p>⚠️ Ви не в мережі. Перевірте інтернет-з&apos;єднання.</p>
               </div>
             )}
 
@@ -200,26 +200,6 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             </div>
           </div>
         </div>
-
-        <style jsx global>{`
-          body {
-            margin: 0;
-            font-family:
-              -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          }
-
-          /* Анімації */
-          @keyframes spin {
-            to {
-              transform: rotate(360deg);
-            }
-          }
-
-         
-
-          
-          
-        `}</style>
       </body>
     </html>
   );

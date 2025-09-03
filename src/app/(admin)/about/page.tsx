@@ -1,10 +1,7 @@
 import React from "react";
 import About from "@/components/about";
 
-export interface PageProps {
-  children: React.ReactNode;
-}
-export default function Page({}: PageProps) {
+export default function Page() {
   return (
     <div>
       <About />
