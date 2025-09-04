@@ -49,7 +49,17 @@ function Hero({ children }: HeroProps) {
         }
       }
 
+if (titleRef.current) {
+  gsap.fromTo(titleRef.current, { opacity: 1, x: 0 }, { opacity: 1, x: -100 ,duration: 1.5, ease: "power2.out"
+  ,scrollTrigger: {
+    trigger: heroRef.current,
+    start: "top top",
+    end: "bottom top",
+    scrub: 1.5,
+  },});
 
+
+}
 
       gsap.fromTo(
         subtitleRef.current,
@@ -119,14 +129,14 @@ function Hero({ children }: HeroProps) {
         <div className="mb-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-5xl mb-6 lg:text-6xl xl:text-[10rem] font-black text-transparent tracking-tighter uppercase bg-gradient-to-r from-white via-yellow-300 to-yellow-500 bg-clip-text py-2"
+            className="text-7xl md:text-8xl mb-10 lg:text-9xl xl:text-[14rem] font-extrabold text-transparent tracking-tighter uppercase bg-gradient-to-r from-amber-100 via-amber-300 to-amber-600 bg-clip-text py-2"
           >
             Fush
           </h1>
 
           <h2
             ref={subtitleRef}
-            className="text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10"
+            className="text-2xl md:text-4xl  lg:text-9xl xl:text-[4rem] font-black text-transparent uppercase bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text -mt-6 md:-mt-8 lg:-mt-10 "
           >
             Ф&apos;юш
           </h2>
@@ -142,10 +152,11 @@ function Hero({ children }: HeroProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </Link>
-
+          <Link href="/about" passHref>
           <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
             <span className="relative z-10">Переглянути роботи</span>
           </button>
+          </Link>
         </div>
       </div>
 
