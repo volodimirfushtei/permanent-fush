@@ -12,7 +12,6 @@ export default function Home() {
 
         <Prices />
         <ServicesSection services={services} />
-
         <Footer />
       </main>
     </div>

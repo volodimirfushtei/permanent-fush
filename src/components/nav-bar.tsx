@@ -140,10 +140,11 @@ export default function NavBar({ children }: NavBarProps) {
             <nav className="hidden md:flex">
               <ul className="flex space-x-8">
                 {[
-                  { label: "Home", path: "/" },
-                  { label: "About", path: "/about" },
-                  { label: "Services", path: "/services" },
-                  { label: "Contacts", path: "/contacts" },
+                  { label: "Головна", path: "/" },
+                  { label: "Про нас", path: "/about" },
+                  { label: "Ціни", path: "/prices" },
+                  { label: "Послуги", path: "/services" },
+                  { label: "Контакти", path: "/contacts" },
                 ].map((item, index) => (
                   <li
                     key={item.label}
@@ -239,10 +240,11 @@ export default function NavBar({ children }: NavBarProps) {
           <nav className="mt-10">
             <ul className="space-y-4">
               {[
-                { label: "Home", path: "/" },
-                { label: "About", path: "/about" },
-                { label: "Services", path: "/services" },
-                { label: "Contacts", path: "/contacts" },
+                { label: "Гоовна", path: "/" },
+                { label: "Про нас", path: "/about" },
+                { label: "Ціни", path: "/prices" },
+                { label: "Послуги", path: "/services" },
+                { label: "Контакти", path: "/contacts" },
               ].map((item) => (
                 <li key={item.label} className="relative group">
                   <Link

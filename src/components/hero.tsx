@@ -3,7 +3,7 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from 'next/link';
+import Link from "next/link";
 // Реєструємо плагін ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,17 +49,24 @@ function Hero({ children }: HeroProps) {
         }
       }
 
-if (titleRef.current) {
-  gsap.fromTo(titleRef.current, { opacity: 1, x: 0 }, { opacity: 1, x: -100 ,duration: 1.5, ease: "power2.out"
-  ,scrollTrigger: {
-    trigger: heroRef.current,
-    start: "top top",
-    end: "bottom top",
-    scrub: 1.5,
-  },});
-
-
-}
+      if (titleRef.current) {
+        gsap.fromTo(
+          titleRef.current,
+          { opacity: 1, x: 0 },
+          {
+            opacity: 1,
+            x: -100,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: heroRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 1.5,
+            },
+          }
+        );
+      }
 
       gsap.fromTo(
         subtitleRef.current,
@@ -144,18 +151,15 @@ if (titleRef.current) {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
           <Link href="/contacts" passHref>
-            <button
-
-                className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg"
-            >
+            <button className="group relative cursor-pointer bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/40 hover:-translate-y-1 text-lg">
               <span className="relative z-10">Запис на консультацію</span>
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </Link>
           <Link href="/about" passHref>
-          <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
-            <span className="relative z-10">Переглянути роботи</span>
-          </button>
+            <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
+              <span className="relative z-10">Переглянути роботи</span>
+            </button>
           </Link>
         </div>
       </div>

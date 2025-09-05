@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect } from "react";
-
 export default function AdminError({
   error,
 }: {
@@ -22,7 +20,7 @@ export default function AdminError({
       </p>
       <button
         onClick={() => window.location.reload()}
-        className="px-6 py-3 bg-yellow-600 text-white rounded-lg shadow hover:bg-yellow-700 transition cursor-pointer"
+        className="px-6 py-3 bg-yellow-600 text-white rounded-lg shadow hover:bg-yellow-700 transition"
       >
         Спробувати знову
       </button>

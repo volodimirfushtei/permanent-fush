@@ -18,6 +18,7 @@ export default function AboutSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Анімації для основних елементів
       const animations = [
         {
           el: refs.image.current,
@@ -48,6 +49,23 @@ export default function AboutSection() {
           },
         });
       });
+
+      // Анімація для кнопки
+      gsap.fromTo(
+        ".cta-button",
+        { scale: 0.9, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          delay: 0.5,
+          scrollTrigger: {
+            trigger: ".cta-button",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -61,44 +79,54 @@ export default function AboutSection() {
     >
       {" "}
       {/* Декоративні елементи */}
-      <div className="absolute top-10 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-20"></div>
-      <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-16">
+      <div className="absolute top-10 left-50 w-72 h-72 bg-yellow-400 rounded-full blur-3xl opacity-20 "></div>
+      <div className="absolute bottom-5 right-80 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-20 "></div>
+      {/* 3D Hover елемент :cite[1]:cite[7] */}
+      <div className="absolute top-1/4 left-10 w-20 h-20 rounded-lg bg-amber-500/30 blur-xl opacity-50 hover:scale-125 hover:rotate-12 transition-all duration-500 transform-style-3d"></div>
+      <div className="absolute bottom-1/3 right-10 w-16 h-16 rounded-full bg-rose-500/30 blur-xl opacity-50 hover:scale-150 hover:-rotate-12 transition-all duration-500 transform-style-3d"></div>
+      <h2 className="text-4xl md:text-5xl text-center font-bold text-gray-400 mb-16 text-reveal">
         Про нас
       </h2>
       {/* Декор */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-500 rounded-full blur-3xl opacity-50 -z-20" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl opacity-30 -z-20" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-500 rounded-full blur-3xl opacity-30 -z-20" />
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Зображення */}
+        {/* Зображення з 3D hover ефектом :cite[1]:cite[7] */}
         <div
           ref={refs.image}
-          className="relative rounded-2xl overflow-hidden shadow-2xl"
+          className="relative rounded-2xl overflow-hidden shadow-2xl transform-style-3d preserve-3d hover-card"
         >
           <img
             src="/images/IMG_3683.JPEG"
             alt="Permanent Studio - інтер'єр салону"
-            className="w-full h-[550px] object-cover"
+            className="w-full h-[550px] object-cover transition-transform duration-700 hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-500 hover:opacity-100" />
+
+          {/* Ефект голограмного сяйва :cite[10] */}
+          <div className="absolute inset-0 opacity-0 transition-opacity duration-500 hover:opacity-100 bg-gradient-to-br from-transparent via-amber-500/10 to-rose-500/10"></div>
         </div>
 
         {/* Контент */}
         <div ref={refs.content} className="lg:pl-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-400 mb-6">
-            Наша <span className="text-amber-700">історія</span> та філософія
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-400 mb-6 ">
+            Наша{" "}
+            <span className="text-amber-700 holographic-text">історія</span> та
+            філософія
           </h2>
-          <p className="text-lg text-gray-500 mb-6 leading-relaxed">
+
+          <p className="text-lg text-gray-500 mb-6 leading-relaxed ">
             Permanent Fush — місце, де ми створюємо красу, що залишається з вами
             надовго. Наша місія — допомогти кожній жінці відчути себе впевненою
             та привабливою.
           </p>
-          <p className="text-lg text-gray-500 mb-8 leading-relaxed">
+
+          <p className="text-lg text-gray-500 mb-8 leading-relaxed ">
             Ми використовуємо лише якісні пігменти та сучасне обладнання, щоб
             забезпечити безпечний і комфортний процес з ідеальним результатом.
           </p>
 
-          {/* Список */}
+          {/* Список з анімаціями hover :cite[10] */}
           <div ref={refs.stats} className="space-y-4 mb-8">
             {[
               "Сертифіковані майстри з багаторічним досвідом",
@@ -106,8 +134,11 @@ export default function AboutSection() {
               "Індивідуальний підхід до кожної клієнтки",
               "Стерильні умови та сучасне обладнання",
             ].map((text, i) => (
-              <div key={i} className="flex items-center text-gray-400">
-                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+              <div
+                key={i}
+                className="flex items-center text-gray-400 hover-item transform transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mr-4 hover-icon">
                   <svg
                     className="w-4 h-4 text-amber-600"
                     fill="none"
@@ -127,11 +158,15 @@ export default function AboutSection() {
             ))}
           </div>
 
-          {/* Кнопка */}
-          <button className="bg-gradient-to-r from-amber-500 to-rose-500 text-white font-semibold px-8 py-4 rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          {/* Кнопка з ефектом рідкого морфінгу :cite[10] */}
+          <button className="cta-button bg-gradient-to-r from-amber-500 to-rose-500 text-white font-semibold px-8 py-4 rounded-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 liquid-morph">
             Дізнатися більше про нас
           </button>
         </div>
+      </div>
+      {/* Підпис автора */}
+      <div className="absolute bottom-4 right-4 text-amber-500/60 text-sm">
+        Розроблено: Фуштей Юлія
       </div>
     </section>
   );

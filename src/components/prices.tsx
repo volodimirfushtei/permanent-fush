@@ -70,14 +70,13 @@ export default function Prices({ children }: PricesProps) {
     {
       icon: "🔄",
       title: "Корекція та фарбування брів",
-      description: "Професійна корекція існуючого перманентного макіяжу.",
+      description: "Бажаний результат за 1 год.",
       details: [
-        "Виконується через 1-2.5 місяці",
-        "Пізніше 2.5 місяців - рефреш",
+        "Корекція воском/пінцетом",
+        "Фарбування професійнмими фарбниками (Zola, Sculptor)",
         "Індивідуальний підхід",
-        "Відновлення кольору та форми",
       ],
-      price: "від 900 ГРН",
+      price: "400 ГРН",
       image: "/images/correction.jpg",
     },
     {
@@ -96,7 +95,7 @@ export default function Prices({ children }: PricesProps) {
     },
     {
       icon: "💫",
-      title: "Видалення  ремувером",
+      title: "Видалення ремувером",
       description:
         "Це безпечний спосіб позбутися небажаного або невдалого татуажу.",
       details: [
@@ -106,6 +105,23 @@ export default function Prices({ children }: PricesProps) {
         "Довготривалий результат",
       ],
       price: "700 ГРН",
+      image: "/images/fush.jpg",
+    },
+    {
+      icon: "💫",
+      title: "Ламінування вій",
+      description: "Косметична процедура, яка робить вії більш виразними.",
+      details: ["Ламінування", "Фарбування", "Ботокс (зволоження)"],
+      price: "600 грн",
+      image: "/images/fush.jpg",
+    },
+    {
+      icon: "💫",
+      title: "Ламінування брів",
+      description:
+        "Косметична процедура, яка укладає та фіксує волоски у потрібному напрямкку.",
+      details: ["Ламінування", "Ботокс (зволоження)"],
+      price: "300грн",
       image: "/images/fush.jpg",
     },
   ];
@@ -193,7 +209,7 @@ export default function Prices({ children }: PricesProps) {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`bg-black/50 rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
+              className={` relative bg-black/50 min-h-96 rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer group ${
                 activeService === index
                   ? "border-amber-600 shadow-xl scale-105"
                   : "border-gray-700 hover:border-amber-200 hover:shadow-xl"
@@ -209,7 +225,7 @@ export default function Prices({ children }: PricesProps) {
                 {service.title}
               </h3>
 
-              <p className="text-gray-400 mb-4 text-center">
+              <p className="text-gray-400 min-h-12 mb-4 text-center">
                 {service.description}
               </p>
 
@@ -226,11 +242,10 @@ export default function Prices({ children }: PricesProps) {
               </div>
 
               <div className="text-center mt-4">
-                <span className="text-2xl font-bold text-amber-300">
+                <span className="text-2xl absolute bottom-2 -translate-x-1/2 font-bold text-amber-300">
                   {service.price}
                 </span>
               </div>
-
             </div>
           ))}
         </div>

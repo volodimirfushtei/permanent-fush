@@ -20,7 +20,7 @@ module.exports = {
       lastmod: config.autoLastmod ? new Date().toISOString() : config.lastmod,
     };
   },
-  additionalPaths: async (config) => {
+  additionalPaths: async () => {
     const result = [];
 
     // Додайте статичні маршрути

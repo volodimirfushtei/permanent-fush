@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 import path from "path";
-import { Configuration } from "webpack";
 
 const nextConfig = {
   output: 'export',
@@ -8,18 +7,13 @@ const nextConfig = {
     optimizeCss: true,
   },
   images: {
-    unoptimized: true, // Ключовий момент для статичного експорту
+    unoptimized: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  webpack: (config: Configuration) => {
-    if (!config.resolve) {
-      config.resolve = {};
-    }
-    if (!config.resolve.alias) {
-      config.resolve.alias = {};
-    }
+  webpack: (config: { resolve: { alias?: any; }; }) => {
+    config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
       "@": path.resolve(__dirname, "src"),
@@ -29,28 +23,15 @@ const nextConfig = {
     };
     return config;
   },
-  headers: async () => {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
-        ],
-      },
-    ];
+  // Используйте turbopack вместо experimental.turbo
+  turbopack: {
+    root: path.join(__dirname, "."),
   },
-
 };
+
+// Условное включение Turbopack в разработке
+if (process.env.NODE_ENV === 'development') {
+
+}
 
 module.exports = nextConfig;
