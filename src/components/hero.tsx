@@ -153,7 +153,7 @@ function Hero({ children }: HeroProps) {
 
           <Link href="/about" passHref>
             <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
-              <span className="relative z-10">Переглянути роботи</span>
+              <span className="relative z-10">Про нас</span>
             </button>
           </Link>
         </div>

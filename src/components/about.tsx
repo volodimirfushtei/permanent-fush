@@ -97,7 +97,7 @@ export default function AboutSection() {
           className="relative rounded-2xl overflow-hidden shadow-2xl transform-style-3d preserve-3d hover-card"
         >
           <img
-            src="/images/IMG_3683.JPEG"
+            src="/images/my_photo.jpg"
             alt="Permanent Studio - інтер'єр салону"
             className="w-full h-[550px] object-cover transition-transform duration-700 hover:scale-110"
           />

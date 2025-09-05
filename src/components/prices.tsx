@@ -84,7 +84,7 @@ export default function Prices({ children }: PricesProps) {
 
     {
       icon: "💫",
-      title: "Видалення ремувером",
+      title: "Видалення перманентного макіяжу ремувером",
       description:
           "Це безпечний спосіб позбутися небажаного або невдалого татуажу.",
       details: [
