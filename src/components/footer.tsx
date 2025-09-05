@@ -219,7 +219,7 @@ export default function Footer({ children }: FooterProps) {
                         src={"/images/the_mineral.jpg"}
                         width={120}
                         height={90}
-                        className="rounded-xl object-contain animate-pulse"
+                        className=" rounded-xl object-contain w-auto h-auto animate-pulse"
                         alt="The Mineral - постачальник пігментів"
                     />
                   </div>
