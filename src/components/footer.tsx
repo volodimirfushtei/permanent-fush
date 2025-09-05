@@ -46,7 +46,7 @@ export default function Footer({ children }: FooterProps) {
             <div className="lg:col-span-1">
               <div className="mb-6">
               <span className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text text-transparent">
-                Permanent Fush.
+                Fush
               </span>
               </div>
               <p className="text-gray-400 mb-6 leading-relaxed">
@@ -245,7 +245,7 @@ export default function Footer({ children }: FooterProps) {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-500 text-sm mb-4 md:mb-0">
-                © {currentYear} Permanent Fush. Всі права захищені.
+                © {currentYear}  Fush Всі права захищені.
               </p>
               <div className="flex space-x-6">
                 <a
