@@ -198,10 +198,7 @@ export default function Prices({ children }: PricesProps) {
           >
             Ціни на <span className="text-amber-500">послуги</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Професійні послуги перманентного макіяжу від досвідчених майстрів з
-            використанням якісних матеріалів
-          </p>
+
         </div>
 
         {/* Сітка послуг */}

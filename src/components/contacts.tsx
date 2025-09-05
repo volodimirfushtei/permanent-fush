@@ -383,33 +383,8 @@ export default function Contacts({ children }: ContactsProps) {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-xl flex items-center justify-center mr-5 flex-shrink-0">
-                    <svg
-                      className="w-6 h-6 text-amber-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 mb-2">Години роботи</p>
-                    <p className="text-white font-medium">
-                      Пн-Пт: <span className="text-amber-400">10:00-20:00</span>
-                    </p>
-                    <p className="text-white font-medium mt-1">
-                      Сб: <span className="text-amber-400">11:00-18:00</span>
-                    </p>
-                    <p className="text-white font-medium mt-1">
-                      Нд: <span className="text-amber-400">За записом</span>
-                    </p>
-                  </div>
+
+
                 </div>
               </div>
             </div>

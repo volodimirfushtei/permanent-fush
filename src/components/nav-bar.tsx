@@ -240,7 +240,7 @@ export default function NavBar({ children }: NavBarProps) {
           <nav className="mt-10">
             <ul className="space-y-4">
               {[
-                { label: "Гоовна", path: "/" },
+                { label: "Головна", path: "/" },
                 { label: "Про нас", path: "/about" },
                 { label: "Ціни", path: "/prices" },
                 { label: "Послуги", path: "/services" },
