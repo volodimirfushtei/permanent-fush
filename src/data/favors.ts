@@ -28,7 +28,7 @@ export const services: Service[] = [
 • безпечність і комфорт під час процедури.
 
 Корекція виконується не раніше і не пізніше 2.5 місяців від первинної процедури. Якщо пізніше 2.5 місяців — робиться рефреш.`,
-    image: "/images/brows.png",
+    image: "/images/permanent_brows.jpg",
     duration: "2-3 години",
   },
   {
@@ -68,7 +68,7 @@ export const services: Service[] = [
 • тривалий результат.
 
 Корекція виконується не раніше і не пізніше 2.5 місяців від первинної процедури. Якщо пізніше 2.5 місяців — робиться рефреш.`,
-    image: "/images/course.jpg",
+    image: "/images/per_lashline.jpg",
     duration: "1.5 години",
   },
   {
@@ -87,7 +87,7 @@ export const services: Service[] = [
 • ефект доглянутих та довгих вій до 6–8 тижнів;
 • зміцнення та живлення натуральних вій;
 • безпека та комфорт.`,
-    image: "/images/per_lashline.jpg",
+    image: "/images/laminate.jpg",
     duration: "1 година",
   },
   {
