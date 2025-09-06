@@ -5,8 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dynamic from "next/dynamic";
 
-import { Send, MessageCircle } from "lucide-react";
-import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import { Send } from "lucide-react";
+
 const Map = dynamic(() => import("./map"), {
   ssr: false,
 });
@@ -149,32 +149,7 @@ export default function Contacts({ children }: ContactsProps) {
     "Корекція",
     "Консультація",
   ];
-  const socialLinks = [
-    {
-      icon: FaInstagram,
-      label: "Instagram",
-      href: "https://instagram.com",
-      color: "hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-600",
-    },
-    {
-      icon: FaFacebook,
-      label: "Facebook",
-      href: "https://facebook.com",
-      color: "hover:bg-blue-600",
-    },
-    {
-      icon: FaYoutube,
-      label: "YouTube",
-      href: "https://youtube.com",
-      color: "hover:bg-red-600",
-    },
-    {
-      icon: MessageCircle,
-      label: "Telegram",
-      href: "#",
-      color: "hover:bg-blue-500",
-    },
-  ];
+
   return (
     <div
       ref={pageRef}
