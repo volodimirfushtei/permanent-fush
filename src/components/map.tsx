@@ -33,7 +33,7 @@ export default function Map() {
     <MapContainer
       center={[48.9415463, 24.6972177]} // Івано-Франківськ
       zoom={13}
-      style={{ height: "260px", width: "100%", borderRadius: "16px" }}
+      style={{ height: "380px", width: "100%", borderRadius: "16px" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -339,7 +339,7 @@ export default function Contacts({ children }: ContactsProps) {
 
               <div
                 ref={mapRef}
-                className="bg-gray-800/40 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-700/50 shadow-xl h-60"
+                className="bg-gray-800/40 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-700/50 shadow-xl h-90"
               >
                 <Map />
               </div>
@@ -381,41 +381,10 @@ export default function Contacts({ children }: ContactsProps) {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start">
-
-
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Соціальні мережі */}
-        <div className="bg-gradient-to-r from-gray-800/40 to-gray-900/40 backdrop-blur-md rounded-3xl border border-gray-700/50 p-10 text-center shadow-xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Слідкуйте за нами
-          </h2>
-          <p className="text-amber-100/80 mb-8 text-lg">
-            Приєднуйтесь до нашої спільноти в соціальних мережах
-          </p>
-
-          <div className="flex justify-center gap-6 flex-wrap">
-            {socialLinks.map((social, index) => {
-              const IconComponent = social.icon;
-              return (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl flex items-center justify-center transition-all duration-300 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl hover:scale-110 ${social.color} group`}
-                  aria-label={social.label}
-                >
-                  <IconComponent className="w-7 h-7 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors" />
-                </a>
-              );
-            })}
           </div>
         </div>
       </div>

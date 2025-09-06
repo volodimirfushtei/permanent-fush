@@ -32,11 +32,11 @@ export default function ServiceDetailsPage({
           href="/"
           className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"
         >
-          Permanent-Fush
+          На головну
         </Link>
         <Link
           href="/services"
-          className="px-4 py-2 rounded-full border border-gray-700 hover:border-amber-400 transition-colors duration-300"
+          className="px-4 py-2 text-sm  rounded-full border border-gray-700 hover:border-amber-400 transition-colors duration-300"
         >
           ← До послуг
         </Link>

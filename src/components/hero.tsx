@@ -136,7 +136,7 @@ function Hero({ children }: HeroProps) {
         <div className="mb-6">
           <h1
             ref={titleRef}
-            className="text-7xl md:text-8xl mb-10 lg:text-9xl xl:text-[14rem] font-extrabold text-transparent tracking-tighter uppercase bg-gradient-to-r from-amber-100 via-amber-300 to-amber-600 bg-clip-text py-2"
+            className="text-9xl md:text-9xl mb-10 lg:text-9xl xl:text-[16rem] font-extrabold text-transparent tracking-tighter uppercase bg-gradient-to-r from-amber-100 via-amber-300 to-amber-600 bg-clip-text py-2"
           >
             Fush
           </h1>
