@@ -366,7 +366,7 @@ export default function Contacts({ children }: ContactsProps) {
                 <div className="p-3 bg-white/5 rounded-full group-hover:bg-blue-500/20 transition-colors duration-300">
                   <Facebook className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <span className="text-white text-sm font-semibold group-hover:text-blue-400 transition-colors">Facebook</span>
+                <span className="text-white text-sm font-semibold group-hover:text-blue-400 transition-colors">TikTok</span>
               </a>
             </div>
 
