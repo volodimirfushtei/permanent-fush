@@ -97,6 +97,14 @@ export default function Prices({ children }: PricesProps) {
       image: "/images/fush.jpg",
     },
     {
+      icon: "",
+      title: "Видалення перманентного макіяжу лазером",
+      description: "Безпечний спосіб видалення",
+      details: ["",],
+      price: "700 ГРН",
+      image: "/images/laser.jpg",
+    },
+    {
       icon: "🔄",
       title: "Корекція та фарбування брів",
       description: "Бажаний результат за 1 год.",

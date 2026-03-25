@@ -125,4 +125,13 @@ export const services: Service[] = [
     image: "/images/remover.jpg",
     duration: "1 година",
   },
+  {
+    id:"7",
+    slug: "laser-removal",
+    title: "Видалення лазером",
+    description: "Безпечний спосіб позбутись тевдалого татуажу ",
+    details: ` Видалення перманентного макіяжу `,
+image: "/images/laser.jpg",
+    duration: "30хв",
+}
 ];

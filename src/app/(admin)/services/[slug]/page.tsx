@@ -177,7 +177,7 @@ export default function ServiceDetailsPage({
       <footer className="border-t border-gray-800 py-12">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-500">
-            © {new Date().getFullYear()} BeautyStudio. Усі права захищені.
+            © {new Date().getFullYear()} Fush. Усі права захищені.
           </p>
         </div>
       </footer>
