@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dynamic from "next/dynamic";
 
-import { Send, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import {Send, Phone, Mail, MapPin, Instagram,  Facebook} from "lucide-react";
 
 const Map = dynamic(() => import("./map"), {
   ssr: false,
