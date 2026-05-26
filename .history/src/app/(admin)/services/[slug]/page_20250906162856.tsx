@@ -5,9 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface ServiceDetailsPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
@@ -16,10 +14,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ServiceDetailsPage({
+export default function ServiceDetailsPage({
   params,
 }: ServiceDetailsPageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const service = services.find((s) => s.slug === slug);
 
   if (!service) {

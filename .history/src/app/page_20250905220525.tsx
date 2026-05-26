@@ -9,7 +9,7 @@ export default function Home() {
     <div className="font-sans overflow-hidden ">
       <main className="flex flex-col w-screen">
         <Hero />
-        <ServicesSection services={services} />
+          <ServicesSection services={services} />
         <Prices />
         <Footer />
       </main>

@@ -5,9 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface ServiceDetailsPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
