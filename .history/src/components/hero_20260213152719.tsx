@@ -14,25 +14,25 @@ const images = [
   {
     image: "/images/lips.jpg",
     className:
-      "w-62 h-42 md:w-60 md:h-50 lg:w-86 lg:h-72 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
+        "w-62 h-42 md:w-60 md:h-50 lg:w-86 lg:h-72 absolute top-[55%] left-[48%] md:left-[70%] object-cover rounded-xl shadow-2xl z-20",
     animation: { x: -1000, rotation: -25, z: 100 },
   },
   {
     image: "/images/laser.jpg",
     className:
-      "w-64 h-48 md:w-92 md:h-56 lg:w-84 lg:h-64 absolute top-[8%] right-[15%] md:right-[20%] object-cover rounded-xl shadow-2xl z-20",
+        "w-64 h-48 md:w-92 md:h-56 lg:w-84 lg:h-64 absolute top-[8%] right-[15%] md:right-[20%] object-cover rounded-xl shadow-2xl z-20",
     animation: { x: 1000, rotation: 15, z: 100 },
   },
   {
     image: "/images/remover.jpg",
     className:
-      "w-60 h-44 md:w-68 md:h-52 lg:w-90 lg:h-70 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
+        "w-60 h-44 md:w-68 md:h-52 lg:w-90 lg:h-70 absolute bottom-[16%] left-[5%] md:left-[12%] object-cover rounded-xl shadow-2xl z-20",
     animation: { x: -800, rotation: -15, z: 100 },
   },
   {
     image: "/images/laminate.jpg",
     className:
-      "w-56 h-40 md:w-64 md:h-48 lg:w-86 lg:h-66 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
+        "w-56 h-40 md:w-64 md:h-48 lg:w-86 lg:h-66 absolute top-[8%] left-[25%] object-cover rounded-xl shadow-2xl z-20",
     animation: { x: 800, rotation: 10, z: 100 },
   },
 ];
@@ -44,7 +44,7 @@ function Hero({ children }: HeroProps) {
 
   const particlesRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-  // Створюємо ref для кожної картинки
+// Створюємо ref для кожної картинки
   const imageRef1 = useRef<HTMLImageElement>(null);
   const imageRef2 = useRef<HTMLImageElement>(null);
   const imageRef3 = useRef<HTMLImageElement>(null);
@@ -96,7 +96,7 @@ function Hero({ children }: HeroProps) {
               end: "bottom top",
               scrub: 1.5,
             },
-          },
+          }
         );
       }
 
@@ -119,10 +119,14 @@ function Hero({ children }: HeroProps) {
             end: "bottom top",
             scrub: 1.5,
           },
-        },
+        }
       );
 
-      // Анімація картинок при скролі
+
+
+
+
+// Анімація картинок при скролі
       imageRefs.forEach((imgRef, index) => {
         if (imgRef.current) {
           const anim = images[index].animation;
@@ -142,20 +146,20 @@ function Hero({ children }: HeroProps) {
 
       // Поява картинок
       const imageElements = imageRefs
-        .map((ref) => ref.current)
-        .filter(Boolean) as HTMLImageElement[];
+          .map((ref) => ref.current)
+          .filter(Boolean) as HTMLImageElement[];
       gsap.fromTo(
-        imageElements,
-        { opacity: 0, scale: 0.8, y: 50 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 1.5,
-          stagger: 0.3,
-          ease: "back.out(1.7)",
-          delay: 0.8,
-        },
+          imageElements,
+          { opacity: 0, scale: 0.8, y: 50 },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "back.out(1.7)",
+            delay: 0.8,
+          },
       );
       // Плаваючі елементи
       if (heroRef.current) {
@@ -196,32 +200,28 @@ function Hero({ children }: HeroProps) {
       ></div>
       {/* Картинки з анімацією */}
       <img
-        ref={imageRef1}
-        loading="eager"
-        src={images[0].image}
-        alt="Creative design"
-        className={`${images[0].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
+          ref={imageRef1}
+          src={images[0].image}
+          alt="Creative design"
+          className={`${images[0].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
       />
       <img
-        ref={imageRef2}
-        loading="eager"
-        src={images[1].image}
-        alt="Innovative solutions"
-        className={`${images[1].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
+          ref={imageRef2}
+          src={images[1].image}
+          alt="Innovative solutions"
+          className={`${images[1].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
       />
       <img
-        ref={imageRef3}
-        src={images[2].image}
-        loading="eager"
-        alt="Digital experience"
-        className={`${images[2].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
+          ref={imageRef3}
+          src={images[2].image}
+          alt="Digital experience"
+          className={`${images[2].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
       />
       <img
-        ref={imageRef4}
-        src={images[3].image}
-        loading="eager"
-        alt="Creative process"
-        className={`${images[3].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
+          ref={imageRef4}
+          src={images[3].image}
+          alt="Creative process"
+          className={`${images[3].className} floating-element border-4 border-white/10 hover:border-yellow-400/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(250,204,21,0.5)]`}
       />
       {/* Декоративні елементи */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-yellow-500/10 blur-3xl floating-element"></div>
@@ -246,6 +246,7 @@ function Hero({ children }: HeroProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20">
+
           <Link href="/about" passHref>
             <button className="group relative cursor-pointer border-2 border-yellow-500/30 text-yellow-400 font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:border-yellow-500 hover:bg-yellow-500/10">
               <span className="relative z-10">Про нас</span>
