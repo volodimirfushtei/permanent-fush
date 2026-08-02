@@ -7,6 +7,7 @@ import { StructuredData } from "@/components/structured-data";
 import React from "react";
 import { Montserrat, Playfair_Display, Dancing_Script } from "next/font/google";
 import Clarity from "@microsoft/clarity";
+
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
@@ -53,6 +54,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    Clarity.init("YOUR_PROJECT_ID");
+  }, []);
+
   return (
     <html
       lang="uk"
@@ -79,15 +84,6 @@ export default function RootLayout({
             gtag('config', 'G-XKWKVJCLZW');
           `}
         </Script>
-        <Script id="microsoft-clarity" strategy="afterInteractive">
-          {`
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xw011swgwh");
-  `}
-        </Script>
       </head>
       <body className="font-sans antialiased">
         {/* Навбар поверх усіх секцій */}
@@ -104,4 +100,7 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error("Function not implemented.");
 }
